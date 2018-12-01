@@ -26,7 +26,9 @@ public class Turret : MonoBehaviour {
 
 			//Check if recharging
 			if (fireRoutine == null) {
-				int hit = Physics2D.RaycastNonAlloc (BulletOrigin.transform.position, target, hits, FireRange);
+				dir = target - BulletOrigin.transform.position;
+				Debug.DrawRay (BulletOrigin.transform.position, dir * FireRange, Color.red);
+				int hit = Physics2D.RaycastNonAlloc (BulletOrigin.transform.position, dir, hits, FireRange);
 				//Can we see the player
 				if(hit > 0 && hits[0].collider != null && hits[0].collider.gameObject == MainActions.Instance.Player.gameObject) {
 					fireRoutine = StartCoroutine (Fire (BulletOrigin.transform.position, target));
