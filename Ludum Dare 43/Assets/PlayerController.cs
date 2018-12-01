@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour {
 			beam.UpdateBeam (BeamOrigin.transform.position, (Vector2) transform.position + target);
 		} else {
 			sounds.StopShoot ();
+			beam.StopBeam ();
 		}
 	}
 
