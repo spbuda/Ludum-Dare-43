@@ -5,6 +5,6 @@ using UnityEngine.Events;
 
 public class OnHit : MonoBehaviour {
 
-	public UnityAction onHitScript;
+	public UnityEvent onHitScript;
 
 }
