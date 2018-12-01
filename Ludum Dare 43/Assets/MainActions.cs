@@ -15,7 +15,8 @@ public class MainActions : ScriptableObject {
 		}
 	}
 
-	public GameObject LosePopup;
+	[SerializeField]
+	private GameObject LosePopup;
 	
 	public void StartGame() {
 		SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
