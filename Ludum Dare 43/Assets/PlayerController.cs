@@ -5,21 +5,30 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 	public float MaxEnergy = 100f;
 	private float energy;
+	private bool dead = false;
 
 	private void OnEnable() {
 		energy = MaxEnergy;
 	}
 
 	void Update() {
-		HandleRotation ();
+		if (!dead) {
+			HandleRotation ();
 
-		HandleControls ();
+			HandleControls ();
 
-		CheckLifeState ();
+			HandleCamera ();
+
+			CheckLifeState ();
+		}
 	}
 
 	void HandleControls() {
 
+	}
+
+	void HandleCamera() {
+		Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -14f);
 	}
 
 	void HandleRotation() {
@@ -33,6 +42,7 @@ public class PlayerController : MonoBehaviour {
 	void CheckLifeState() {
 		if(energy <= 0f) {
 			MainActions.Instance.LoseGame ();
+			dead = true;
 		}
 	}
 }
