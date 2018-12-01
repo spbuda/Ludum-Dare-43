@@ -6,6 +6,6 @@ public class OpenDoor : MonoBehaviour
 {
 	
 	public void onHit() {
-		GetComponent<Collider2D>().isTrigger = true;
+		GetComponent<Collider2D>().enabled = false;
 	}
 }
