@@ -232,7 +232,7 @@ MonoBehaviour:
     loop: 0
   Warning:
     sounds:
-    - {fileID: 8300000, guid: de679bfc3ffc35146a1c50408de044bc, type: 3}
+    - {fileID: 8300000, guid: 019ba993239371e4ea7a093f126ad0ab, type: 3}
     volume: 0.66
     pitchVariance: 0
     loop: 0
