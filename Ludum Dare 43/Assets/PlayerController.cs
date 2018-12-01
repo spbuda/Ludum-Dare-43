@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
 	public float Speed = 1f;
 	public float Strength = 1f;
 	public float BeamLength = 10f;
+	public GameObject BeamOrigin;
+	public BeamEffectController BeamPrefab;
 
 	public bool FireForce = false;
 	public MoveType MoveType = MoveType.Relative;
@@ -24,7 +26,13 @@ public class PlayerController : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D> ();
 		healthOrb = GetComponentInChildren<PlayerHealth> ();
 		sounds = GetComponent<BaseSounds> ();
-		beam = GetComponentInChildren<BeamEffectController> ();
+		if(beam != null) {
+			Destroy (beam);
+		}
+		if(BeamOrigin == null) {
+			BeamOrigin = gameObject;
+		}
+		beam = Instantiate (BeamPrefab, transform);
 	}
 
 	void Update() {
@@ -47,10 +55,10 @@ public class PlayerController : MonoBehaviour {
 				rb.AddForce (lookPos * (-Speed * timestep));
 			}
 			beam.MakeBeam ();
-
-			//TODO: find beam target.
-			Vector2 pos = transform.position;
-			beam.UpdateBeam (pos + lookPos * BeamLength);
+			
+			//TODO: limit length if contact with target.
+			Vector2 target = (lookPos).normalized * BeamLength;
+			beam.UpdateBeam (BeamOrigin.transform.position, (Vector2) transform.position + target);
 		} else {
 			sounds.StopShoot ();
 			beam.StopBeam ();
@@ -62,7 +70,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private Vector3 PlayerToMouse() {
-		Vector3 mousePos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 10);
+		Vector2 mousePos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y);
 		Vector3 lookPos = Camera.main.ScreenToWorldPoint (mousePos);
 		return lookPos - transform.position;
 	}
@@ -80,16 +88,18 @@ public class PlayerController : MonoBehaviour {
 			sounds.OnWarning ();
 		}
 		if(energy <= 0f) {
-			MainActions.Instance.LoseGame ();
 			dead = true;
 			sounds.StopShoot ();
 			sounds.OnDeath ();
+			beam.StopBeam ();
+
+			MainActions.Instance.LoseGame ();
 		}
 	}
 
 	private void FixedUpdate() {
 		if (!dead) {
-			HandleControlsForce (Time.fixedDeltaTime);
+			HandleControls (Time.fixedDeltaTime);
 
 			HandleRotation ();
 
@@ -133,9 +143,8 @@ public class PlayerController : MonoBehaviour {
 		Vector2 force = GetForce ();
 
 		if (force != Vector2.zero) {
-			Vector2 lookPos = PlayerToMouse ();
-			force = lookPos * force.normalized * Speed * timestep;
-			rb.AddForce (force);
+			force = (force.normalized) * Speed * timestep;
+			rb.AddRelativeForce (force);
 		}
 	}
 
