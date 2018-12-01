@@ -657,8 +657,6 @@ GameObject:
   - component: {fileID: 33385589}
   - component: {fileID: 33385592}
   - component: {fileID: 33385591}
-  - component: {fileID: 33385590}
-  - component: {fileID: 33385593}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -680,19 +678,6 @@ Transform:
   m_Father: {fileID: 1455082956}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 10, y: 10, z: 2}
---- !u!65 &33385590
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33385588}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &33385591
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -738,18 +723,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33385588}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &33385593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33385588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9509a1932fd06ae47ada4ffc5b838197, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &48740416
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,7 +778,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &48740419
 Transform:
@@ -815,7 +788,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48740416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.5, y: -1.51, z: 0.017578125}
+  m_LocalPosition: {x: 18.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 960012372}
@@ -953,11 +926,11 @@ TextMesh:
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
-  m_Anchor: 0
-  m_Alignment: 0
+  m_Anchor: 4
+  m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 0
-  m_FontStyle: 0
+  m_FontStyle: 2
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
@@ -1193,7 +1166,7 @@ Transform:
   m_Children:
   - {fileID: 5493888}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1289714633
 GameObject:
@@ -1742,7 +1715,7 @@ PrefabInstance:
     - target: {fileID: 8508593036250349784, guid: 6af950b030688464a96bc8a6af24f677,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.09375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8508593036250349784, guid: 6af950b030688464a96bc8a6af24f677,
         type: 3}
