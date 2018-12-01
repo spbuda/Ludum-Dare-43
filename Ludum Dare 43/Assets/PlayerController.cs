@@ -40,15 +40,19 @@ public class PlayerController : MonoBehaviour {
 			HandleCamera ();
 
 			CheckLifeState ();
+
+			healthOrb.Resize (MaxEnergy, energy);
 		}
+	}
+
+	void OnCollisionEnter2D(Collision2D other) {
+		energy -= other.gameObject.GetComponent<CollisionDamage> ().energyDamage;
 	}
 
 	void HandleActions(float timestep) {
 		if (Input.GetMouseButton (0)) {
 			sounds.OnShoot ();
 			energy -= timestep;
-
-			healthOrb.Resize (MaxEnergy, energy);
 
 			Vector2 lookPos = PlayerToMouse ().normalized;
 			if (FireForce) {
