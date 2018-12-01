@@ -24,11 +24,16 @@ public class BulletPool : ScriptableObject {
 
 	public Bullet Next(float speed, float damage, float lifetime, Vector2 position, Vector2 target) {
 		Bullet bullet;
+		if(pool == null) {
+			pool = new Queue<Bullet> (PoolSize);
+		}
+
 		if (pool.Count > 0 && pool.Peek().Active && pool.Count < PoolSize) {
 			bullet = pool.Dequeue ();
 		} else {
-			bullet = GameObject.Instantiate (BulletPrefab);
+			bullet = Instantiate (BulletPrefab);
 		}
+
 		pool.Enqueue (bullet);
 		bullet.Init (speed, damage, lifetime, position, target);
 		return bullet;
