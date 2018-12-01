@@ -161,7 +161,8 @@ MonoBehaviour:
   MaxEnergy: 10
   Speed: 5000
   Strength: 2
-  FireForce: 1
+  BeamLength: 10
+  FireForce: 0
   MoveForce: 1
 --- !u!50 &3016063548764109828
 Rigidbody2D:

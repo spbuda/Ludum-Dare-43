@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -440,11 +440,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5563364143901461194}
     m_Modifications:
-    - target: {fileID: 8005104125062725794, guid: 7736524722513194da854a6f5fc54f55,
-        type: 3}
-      propertyPath: m_Name
-      value: Beam
-      objectReference: {fileID: 0}
     - target: {fileID: 8005104125062725795, guid: 7736524722513194da854a6f5fc54f55,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -499,6 +494,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8005104125062725794, guid: 7736524722513194da854a6f5fc54f55,
+        type: 3}
+      propertyPath: m_Name
+      value: Beam
       objectReference: {fileID: 0}
     - target: {fileID: 249767115341585106, guid: 7736524722513194da854a6f5fc54f55,
         type: 3}
@@ -590,11 +590,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3016063547559129326, guid: ff25e269ec931ad45909135df888a173,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff25e269ec931ad45909135df888a173, type: 3}

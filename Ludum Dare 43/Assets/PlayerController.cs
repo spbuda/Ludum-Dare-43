@@ -2,25 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MoveType { Force, Direct, Relative }
 public class PlayerController : MonoBehaviour {
 	public float MaxEnergy = 100f;
 	public float Speed = 1f;
 	public float Strength = 1f;
+	public float BeamLength = 10f;
 
 	public bool FireForce = false;
-	public bool MoveForce = true;
+	public MoveType MoveType = MoveType.Relative;
 
 	private float energy;
 	private bool dead = false;
 	Rigidbody2D rb;
 	PlayerHealth healthOrb;
 	BaseSounds sounds;
+	BeamEffectController beam;
 
 	private void OnEnable() {
 		energy = MaxEnergy;
 		rb = GetComponent<Rigidbody2D> ();
 		healthOrb = GetComponentInChildren<PlayerHealth> ();
 		sounds = GetComponent<BaseSounds> ();
+		beam = GetComponentInChildren<BeamEffectController> ();
 	}
 
 	void Update() {
@@ -38,12 +42,18 @@ public class PlayerController : MonoBehaviour {
 
 			healthOrb.Resize (MaxEnergy, energy);
 
+			Vector2 lookPos = PlayerToMouse ().normalized;
 			if (FireForce) {
-				Vector3 lookPos = PlayerToMouse ();
-				rb.AddForce (lookPos.normalized * (-Speed * timestep));
+				rb.AddForce (lookPos * (-Speed * timestep));
 			}
+			beam.MakeBeam ();
+
+			//TODO: find beam target.
+			Vector2 pos = transform.position;
+			beam.UpdateBeam (pos + lookPos * BeamLength);
 		} else {
 			sounds.StopShoot ();
+			beam.StopBeam ();
 		}
 	}
 
@@ -88,10 +98,16 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void HandleControls(float timestep) {
-		if (MoveForce) {
-			HandleControlsForce (Time.fixedDeltaTime);
-		} else {
+		switch (MoveType) {
+		case (MoveType.Relative):
+			HandleControlsRelative (Time.fixedDeltaTime);
+			break;
+		case (MoveType.Direct):
 			HandleControlsDirect (Time.fixedDeltaTime);
+			break;
+		case (MoveType.Force):
+			HandleControlsForce (Time.fixedDeltaTime);
+			break;
 		}
 	}
 
@@ -110,6 +126,16 @@ public class PlayerController : MonoBehaviour {
 		if (force != Vector2.zero) {
 			force = force.normalized * Speed * timestep;
 			rb.MovePosition(rb.position + force);
+		}
+	}
+
+	void HandleControlsRelative(float timestep) {
+		Vector2 force = GetForce ();
+
+		if (force != Vector2.zero) {
+			Vector2 lookPos = PlayerToMouse ();
+			force = lookPos * force.normalized * Speed * timestep;
+			rb.AddForce (force);
 		}
 	}
 
