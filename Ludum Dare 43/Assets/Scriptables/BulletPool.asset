@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139bedccdc5145b48b0e76bb473807f5, type: 3}
   m_Name: BulletPool
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 0}
+  BulletPrefab: {fileID: 5741181016350728571, guid: 26822e5f7198f714996b5b415157710a,
+    type: 3}
   PoolSize: 50
