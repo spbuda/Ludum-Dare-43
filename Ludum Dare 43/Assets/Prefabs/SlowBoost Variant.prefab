@@ -9,7 +9,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1330910713697375012}
       propertyPath: m_Name
-      value: SlowBoost
+      value: SlowBoost Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330910713697375012}
+      propertyPath: m_TagString
+      value: Shootover
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330910713697375011}
+      propertyPath: m_LocalPosition.x
+      value: 5.860738
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330910713697375011}
+      propertyPath: m_LocalPosition.y
+      value: -4.1663923
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330910713697375013}
+      propertyPath: speedMod
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330910714799266983}
+      propertyPath: m_Text
+      value: <<<
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330910713697375011}
+      propertyPath: m_LocalPosition.x
+      value: 5.860738
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330910713697375011}
+      propertyPath: m_LocalPosition.y
+      value: -4.1663923
       objectReference: {fileID: 0}
     - target: {fileID: 1330910713697375011}
       propertyPath: m_LocalPosition.x
@@ -55,6 +83,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1330910713697375012}
+      propertyPath: m_Name
+      value: SlowBoost Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330910713697375012}
+      propertyPath: m_TagString
+      value: Shootover
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330910713697375012}
+      propertyPath: m_Name
+      value: SlowBoost
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330910713697375013}
+      propertyPath: speedMod
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 1330910713697375013}
       propertyPath: speedMod
       value: -2
@@ -63,10 +107,14 @@ PrefabInstance:
       propertyPath: m_Text
       value: <<<
       objectReference: {fileID: 0}
+    - target: {fileID: 1330910714799266983}
+      propertyPath: m_Text
+      value: <<<
+      objectReference: {fileID: 0}
     - target: {fileID: 7399705606266259070, guid: 1f6371179feffe847be8397e92a1b1b9,
         type: 3}
       propertyPath: m_Name
-      value: SlowBoost
+      value: SlowBoost Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7399705606266259065, guid: 1f6371179feffe847be8397e92a1b1b9,
         type: 3}
@@ -81,7 +129,7 @@ PrefabInstance:
     - target: {fileID: 7399705606266259071, guid: 1f6371179feffe847be8397e92a1b1b9,
         type: 3}
       propertyPath: speedMod
-      value: -2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7399705607291865597, guid: 1f6371179feffe847be8397e92a1b1b9,
         type: 3}

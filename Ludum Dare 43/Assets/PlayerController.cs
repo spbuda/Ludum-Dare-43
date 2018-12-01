@@ -97,17 +97,23 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	RaycastHit2D[] hit = new RaycastHit2D[1];
+	RaycastHit2D[] hit = new RaycastHit2D[20];
 	Vector2 ShootThing(Vector2 origin, Vector2 direction) {
 		int hits = Physics2D.RaycastNonAlloc (origin, direction, hit, BeamLength);
-		if(hits > 0 && hit[0].collider != null) {
-			if(hit[0].collider.tag == "Hittable") {
-				hit[0].collider.gameObject.GetComponent<OnHit> ().onHitScript.Invoke ();
+		if(hits > 0) {
+			int i = 0;
+			while (i <= hits) {
+				if(hit[i].collider.tag == "Shootover") {
+					i++;
+				} else {
+					if (hit[i].collider.tag == "Hittable") {
+						hit[i].collider.gameObject.GetComponent<OnHit> ().onHitScript.Invoke ();
+					}
+					return direction * hit[i].distance;
+				}
 			}
-			return direction * hit[0].distance;
-		} else {
-			return direction * BeamLength;
 		}
+		return direction * BeamLength;
 	}
 
 	void HandleCamera() {
