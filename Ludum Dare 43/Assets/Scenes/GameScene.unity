@@ -245,7 +245,7 @@ Tilemap:
   m_TileMatrixArray:
   - m_RefCount: 0
     m_Data:
-      e00: 1057358
+      e00: 1068892
       e01: 8.785357e-39
       e02: NaN
       e03: 150.61536
@@ -254,7 +254,7 @@ Tilemap:
       e12: NaN
       e13: 1e-45
       e20: 8.785435e-39
-      e21: 0.0037453568
+      e21: 0.0038421175
       e22: 0
       e23: 5.906495
       e30: 0
@@ -666,6 +666,7 @@ GameObject:
   - component: {fileID: 1030814414}
   - component: {fileID: 1030814413}
   - component: {fileID: 1030814412}
+  - component: {fileID: 1030814415}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -737,6 +738,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1030814415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030814411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AssetsPPU: 100
+  m_RefResolutionX: 320
+  m_RefResolutionY: 180
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1 &1112842895
 GameObject:
   m_ObjectHideFlags: 0
