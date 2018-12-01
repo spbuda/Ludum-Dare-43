@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class LosePopup : MonoBehaviour {
 	public void KillMe() {
-		Destroy (this);
+		Destroy (this.gameObject);
 	}
 }
