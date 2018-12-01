@@ -10,6 +10,7 @@ public class Turret : MonoBehaviour {
 	public float BulletDamage = 1f;
 	public float BulletLifetime = 10f;
 
+	public float FireRange = 20f;
 	public float FireChargeTime = 1f;
 	public float FireRate = 2f;
 
@@ -17,15 +18,19 @@ public class Turret : MonoBehaviour {
 	private Coroutine fireRoutine = null;
 
 	void Update() {
-		Vector3 target = MainActions.Instance.Player.transform.position;
-		BulletOrigin.transform.LookAt (target);
+		if (MainActions.Instance.Player) {
+			Vector3 target = MainActions.Instance.Player.transform.position;
+			Vector3 dir = target - transform.position;
+			float angle = (Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg) - 90f;
+			Main.transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
 
-		//Check if recharging
-		if(fireRoutine != null) {
-			int hit = Physics2D.RaycastNonAlloc (BulletOrigin.transform.position, target, hits);
-			//Can we see the player
-			if(hit > 0 && hits[0].collider != null) {
-				fireRoutine = StartCoroutine (Fire (BulletOrigin.transform.position, target));
+			//Check if recharging
+			if (fireRoutine == null) {
+				int hit = Physics2D.RaycastNonAlloc (BulletOrigin.transform.position, target, hits, FireRange);
+				//Can we see the player
+				if(hit > 0 && hits[0].collider != null && hits[0].collider.gameObject == MainActions.Instance.Player.gameObject) {
+					fireRoutine = StartCoroutine (Fire (BulletOrigin.transform.position, target));
+				}
 			}
 		}
 	}

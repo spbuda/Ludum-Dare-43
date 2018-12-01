@@ -160,6 +160,7 @@ MonoBehaviour:
   BulletSpeed: 1
   BulletDamage: 1
   BulletLifetime: 10
+  FireRange: 20
   FireChargeTime: 1
   FireRate: 2
 --- !u!1 &3260682730085198068
