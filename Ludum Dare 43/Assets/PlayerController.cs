@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (!Tools.Calcu.ZeroIsh (force)) {
-			energy -= force.magnitude * .001f;
+			energy -= Time.fixedDeltaTime;
 		}
 	}
 
