@@ -29,4 +29,6 @@ public class MainActions : ScriptableObject {
 	public void QuitGame() {
 		SceneManager.LoadScene ("MenuScene", LoadSceneMode.Single);
 	}
+
+	public PlayerController Player { get; set; } = null;
 }
