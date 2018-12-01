@@ -23,13 +23,17 @@ public class BulletPool : ScriptableObject {
 	private Queue<Bullet> pool;
 
 	public Bullet Next(float speed, float damage, float lifetime, Vector2 position, Vector2 target) {
-		Bullet bullet;
+		Bullet bullet = null;
 		if(pool == null) {
 			pool = new Queue<Bullet> (PoolSize);
 		}
 
-		if (pool.Count > 0 && pool.Peek().Active && pool.Count < PoolSize) {
-			bullet = pool.Dequeue ();
+		if (pool.Count > 0) {
+			if(!pool.Peek ().Active || pool.Count >= PoolSize) {
+				bullet = pool.Dequeue ();
+			} else {
+				bullet = Instantiate (BulletPrefab);
+			}
 		} else {
 			bullet = Instantiate (BulletPrefab);
 		}
