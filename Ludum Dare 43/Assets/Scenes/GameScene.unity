@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d249559b310f24890a1aaf982f1256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyDamage: 5
+  energyDamage: 10
 --- !u!61 &48740418
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1433,6 +1433,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8508593036250349785, guid: 6af950b030688464a96bc8a6af24f677,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3098417258225646195, guid: 6af950b030688464a96bc8a6af24f677,
         type: 3}
       propertyPath: onHitScript.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1462,11 +1467,6 @@ PrefabInstance:
         type: 3}
       propertyPath: onHitScript.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8508593036250349785, guid: 6af950b030688464a96bc8a6af24f677,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8508593036191472838, guid: 6af950b030688464a96bc8a6af24f677, type: 3}
