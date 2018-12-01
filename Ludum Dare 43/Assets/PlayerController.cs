@@ -49,9 +49,31 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D other) {
-		energy -= other.gameObject.GetComponent<CollisionDamage> ().energyDamage;
+	void OnCollisionEnter2D(Collision2D collisionD) {
+		energy -= collisionD.gameObject.GetComponent<CollisionDamage> ().energyDamage;
 	}
+
+	void OnTriggerStay2D(Collider2D staticEffect) {
+		if (staticEffect.gameObject.GetComponent<DamageOT> () != null) {
+			energy -= staticEffect.gameObject.GetComponent<DamageOT> ().dOT;
+		}
+	}
+
+	private float speedModifier = 1;
+
+	void OnTriggerEnter2D(Collider2D staticEffect) {
+		if (staticEffect.gameObject.GetComponent<SpeedPad> () != null) {
+			speedModifier = staticEffect.gameObject.GetComponent<SpeedPad> ().speedMod;
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D staticEffect) {
+		if(staticEffect.gameObject.GetComponent<SpeedPad>() != null) {
+			speedModifier = 1f;
+		}
+	}
+
+
 
 	void HandleActions(float timestep) {
 		if (Input.GetMouseButton (0)) {
@@ -155,7 +177,7 @@ public class PlayerController : MonoBehaviour {
 		Vector2 force = GetForce ();
 
 		if (force != Vector2.zero) {
-			force = force.normalized * Speed * timestep;
+			force = force.normalized * Speed * speedModifier * timestep;
 			rb.AddForce (force);
 		}
 		return force;
@@ -165,7 +187,7 @@ public class PlayerController : MonoBehaviour {
 		Vector2 force = GetForce ();
 
 		if (force != Vector2.zero) {
-			force = force.normalized * Speed * timestep;
+			force = force.normalized * Speed * speedModifier * timestep;
 			rb.MovePosition (rb.position + force);
 		}
 		return force;
@@ -175,7 +197,7 @@ public class PlayerController : MonoBehaviour {
 		Vector2 force = GetForce ();
 
 		if (force != Vector2.zero) {
-			force = (force.normalized) * Speed * timestep;
+			force = (force.normalized) * Speed * speedModifier * timestep;
 			rb.AddRelativeForce (force);
 		}
 		return force;

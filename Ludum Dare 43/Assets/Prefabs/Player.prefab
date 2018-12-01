@@ -4857,7 +4857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7342c242a4c48d468e9c426d2c6b5a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxEnergy: 100
+  MaxEnergy: 10
   Speed: 5000
   Strength: 2
   BeamLength: 30
@@ -4972,7 +4972,7 @@ Transform:
   m_GameObject: {fileID: 3016063549220661919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.06, y: 1.06, z: 1.06}
   m_Children: []
   m_Father: {fileID: 3016063548764109834}
   m_RootOrder: 1
