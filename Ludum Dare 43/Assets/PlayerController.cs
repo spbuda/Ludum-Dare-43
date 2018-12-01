@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour {
 	public float MaxEnergy = 100f;
 	public float Speed = 1f;
 
+	public bool FireForce = false;
+	public bool MoveForce = true;
+
 	private float energy;
 	private bool dead = false;
 	Rigidbody2D rb;
@@ -19,19 +22,21 @@ public class PlayerController : MonoBehaviour {
 
 	void Update() {
 		if (!dead) {
-			HandleActions ();
-
 			HandleCamera ();
 
 			CheckLifeState ();
 		}
 	}
 
-	void HandleActions() {
+	void HandleActions(float timestep) {
 		if (Input.GetMouseButton (0)) {
-			energy -= Time.deltaTime;
+			energy -= timestep;
 
 			healthOrb.Resize (MaxEnergy, energy);
+
+			if (FireForce) {
+				rb.AddForce (transform.rotation.eulerAngles * Speed);
+			}
 		}
 	}
 
@@ -56,13 +61,23 @@ public class PlayerController : MonoBehaviour {
 
 	private void FixedUpdate() {
 		if (!dead) {
-			HandleControls (Time.fixedDeltaTime);
+			HandleControlsForce (Time.fixedDeltaTime);
 
 			HandleRotation ();
+
+			HandleActions (Time.fixedDeltaTime);
 		}
 	}
 
 	void HandleControls(float timestep) {
+		if (MoveForce) {
+			HandleControlsForce (Time.fixedDeltaTime);
+		} else {
+			HandleControlsDirect (Time.fixedDeltaTime);
+		}
+	}
+
+	void HandleControlsForce(float timestep) {
 		Vector2 force = Vector2.zero;
 		bool changed = false;
 		if (Input.GetKey (KeyCode.W)) {
@@ -85,6 +100,32 @@ public class PlayerController : MonoBehaviour {
 		if (changed) {
 			force = force.normalized * Speed * timestep;
 			rb.AddForce (force);
+		}
+	}
+
+	void HandleControlsDirect(float timestep) {
+		Vector2 force = Vector2.zero;
+		bool changed = false;
+		if (Input.GetKey (KeyCode.W)) {
+			force += Vector2.up;
+			changed = true;
+		}
+		if (Input.GetKey (KeyCode.S)) {
+			force += Vector2.down;
+			changed = true;
+		}
+		if (Input.GetKey (KeyCode.A)) {
+			force += Vector2.left;
+			changed = true;
+		}
+		if (Input.GetKey (KeyCode.D)) {
+			force += Vector2.right;
+			changed = true;
+		}
+
+		if (changed) {
+			force = force.normalized * Speed * timestep;
+			rb.MovePosition(rb.position + force);
 		}
 	}
 }
