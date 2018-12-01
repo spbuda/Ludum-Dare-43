@@ -108,44 +108,54 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void HandleControls(float timestep) {
+		Vector2 force;
 		switch (MoveType) {
 		case (MoveType.Relative):
-			HandleControlsRelative (Time.fixedDeltaTime);
+			force = HandleControlsRelative (Time.fixedDeltaTime);
 			break;
 		case (MoveType.Direct):
-			HandleControlsDirect (Time.fixedDeltaTime);
+			force = HandleControlsDirect (Time.fixedDeltaTime);
 			break;
 		case (MoveType.Force):
-			HandleControlsForce (Time.fixedDeltaTime);
+			force = HandleControlsForce (Time.fixedDeltaTime);
 			break;
+		default:
+			throw new UnityException ("Not implemented");
+		}
+
+		if (!Tools.Calcu.ZeroIsh (force)) {
+			energy -= force.magnitude * .001f;
 		}
 	}
 
-	void HandleControlsForce(float timestep) {
+	Vector2 HandleControlsForce(float timestep) {
 		Vector2 force = GetForce ();
 
 		if (force != Vector2.zero) {
 			force = force.normalized * Speed * timestep;
 			rb.AddForce (force);
 		}
+		return force;
 	}
 
-	void HandleControlsDirect(float timestep) {
+	Vector2 HandleControlsDirect(float timestep) {
 		Vector2 force = GetForce ();
 
 		if (force != Vector2.zero) {
 			force = force.normalized * Speed * timestep;
 			rb.MovePosition(rb.position + force);
 		}
+		return force;
 	}
 
-	void HandleControlsRelative(float timestep) {
+	Vector2 HandleControlsRelative(float timestep) {
 		Vector2 force = GetForce ();
 
 		if (force != Vector2.zero) {
 			force = (force.normalized) * Speed * timestep;
 			rb.AddRelativeForce (force);
 		}
+		return force;
 	}
 
 	private Vector2 GetForce() {
