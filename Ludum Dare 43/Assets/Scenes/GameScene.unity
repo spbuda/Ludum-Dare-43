@@ -591,6 +591,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5024493832649002705, guid: ff25e269ec931ad45909135df888a173,
+        type: 3}
+      propertyPath: Shoot.sounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: b5839739c48e652429cd76e0078084b5, type: 3}
+    - target: {fileID: 5024493832649002705, guid: ff25e269ec931ad45909135df888a173,
+        type: 3}
+      propertyPath: Warning.sounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 019ba993239371e4ea7a093f126ad0ab, type: 3}
     - target: {fileID: 3016063547559129326, guid: ff25e269ec931ad45909135df888a173,
         type: 3}
       propertyPath: m_WasSpriteAssigned
