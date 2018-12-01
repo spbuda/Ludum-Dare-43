@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour {
 			BeamOrigin = gameObject;
 		}
 		beam = Instantiate (BeamPrefab, transform);
+		MainActions.Instance.Player = this;
+	}
+	private void OnDisable() {
+		MainActions.Instance.Player = null;
 	}
 
 	void Update() {
