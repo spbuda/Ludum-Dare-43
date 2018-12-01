@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, HittableThing {
+public class PlayerController : MonoBehaviour {
 	public float MaxEnergy = 100f;
 	public float Speed = 1f;
 	public float Strength = 1f;
@@ -30,14 +30,6 @@ public class PlayerController : MonoBehaviour, HittableThing {
 			CheckLifeState ();
 		}
 	}
-
-	#region HittableThing implementation
-	public float HitAmount => Strength;
-	public void HitBy(HittableThing instigator) {
-		energy -= instigator.HitAmount;
-		sounds.OnHit ();
-	}
-	#endregion
 
 	void HandleActions(float timestep) {
 		if (Input.GetMouseButton (0)) {
