@@ -2,25 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MoveType { Force, Direct, Relative }
 public class PlayerController : MonoBehaviour {
 	public float MaxEnergy = 100f;
 	public float Speed = 1f;
 	public float Strength = 1f;
+	public float BeamLength = 10f;
+	public GameObject BeamOrigin;
+	public BeamEffectController BeamPrefab;
 
 	public bool FireForce = false;
-	public bool MoveForce = true;
+	public MoveType MoveType = MoveType.Relative;
 
 	private float energy;
 	private bool dead = false;
 	Rigidbody2D rb;
 	PlayerHealth healthOrb;
 	BaseSounds sounds;
+	BeamEffectController beam;
 
 	private void OnEnable() {
 		energy = MaxEnergy;
 		rb = GetComponent<Rigidbody2D> ();
 		healthOrb = GetComponentInChildren<PlayerHealth> ();
 		sounds = GetComponent<BaseSounds> ();
+		if (beam != null) {
+			Destroy (beam);
+		}
+		if (BeamOrigin == null) {
+			BeamOrigin = gameObject;
+		}
+		beam = Instantiate (BeamPrefab, transform);
 	}
 
 	void Update() {
@@ -38,10 +50,15 @@ public class PlayerController : MonoBehaviour {
 
 			healthOrb.Resize (MaxEnergy, energy);
 
+			Vector2 lookPos = PlayerToMouse ().normalized;
 			if (FireForce) {
-				Vector3 lookPos = PlayerToMouse ();
-				rb.AddForce (lookPos.normalized * (-Speed * timestep));
+				rb.AddForce (lookPos * (-Speed * timestep));
 			}
+			beam.MakeBeam ();
+
+			//TODO: limit length if contact with target.
+			Vector2 target = (lookPos).normalized * BeamLength;
+			beam.UpdateBeam (BeamOrigin.transform.position, (Vector2) transform.position + target);
 		} else {
 			sounds.StopShoot ();
 		}
@@ -51,35 +68,37 @@ public class PlayerController : MonoBehaviour {
 		Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -14f);
 	}
 
-	private Vector3 PlayerToMouse() {
-		Vector3 mousePos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 10);
-		Vector3 lookPos = Camera.main.ScreenToWorldPoint (mousePos);
-		return lookPos - transform.position;
+	private Vector2 PlayerToMouse() {
+		Vector2 mousePos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y);
+		Vector2 lookPos = Camera.main.ScreenToWorldPoint (mousePos);
+		return lookPos - (Vector2) transform.position;
 	}
 
 	void HandleRotation() {
-		Vector3 lookPos = PlayerToMouse ();
+		Vector2 lookPos = PlayerToMouse ();
 		float angle = (Mathf.Atan2 (lookPos.y, lookPos.x) * Mathf.Rad2Deg) - 90f;
 		transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
 	}
 
 	private bool warning = false;
 	void CheckLifeState() {
-		if(!warning && energy <= MaxEnergy * .3f) {
+		if (!warning && energy <= MaxEnergy * .3f) {
 			warning = true;
 			sounds.OnWarning ();
 		}
-		if(energy <= 0f) {
-			MainActions.Instance.LoseGame ();
+		if (energy <= 0f) {
 			dead = true;
 			sounds.StopShoot ();
 			sounds.OnDeath ();
+			beam.StopBeam ();
+
+			MainActions.Instance.LoseGame ();
 		}
 	}
 
 	private void FixedUpdate() {
 		if (!dead) {
-			HandleControlsForce (Time.fixedDeltaTime);
+			HandleControls (Time.fixedDeltaTime);
 
 			HandleRotation ();
 
@@ -88,29 +107,54 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void HandleControls(float timestep) {
-		if (MoveForce) {
-			HandleControlsForce (Time.fixedDeltaTime);
-		} else {
-			HandleControlsDirect (Time.fixedDeltaTime);
+		Vector2 force;
+		switch (MoveType) {
+		case (MoveType.Relative):
+			force = HandleControlsRelative (Time.fixedDeltaTime);
+			break;
+		case (MoveType.Direct):
+			force = HandleControlsDirect (Time.fixedDeltaTime);
+			break;
+		case (MoveType.Force):
+			force = HandleControlsForce (Time.fixedDeltaTime);
+			break;
+		default:
+			throw new UnityException ("Not implemented");
+		}
+
+		if (!Tools.Calcu.ZeroIsh (force)) {
+			energy -= force.magnitude * .001f;
 		}
 	}
 
-	void HandleControlsForce(float timestep) {
+	Vector2 HandleControlsForce(float timestep) {
 		Vector2 force = GetForce ();
 
 		if (force != Vector2.zero) {
 			force = force.normalized * Speed * timestep;
 			rb.AddForce (force);
 		}
+		return force;
 	}
 
-	void HandleControlsDirect(float timestep) {
+	Vector2 HandleControlsDirect(float timestep) {
 		Vector2 force = GetForce ();
 
 		if (force != Vector2.zero) {
 			force = force.normalized * Speed * timestep;
-			rb.MovePosition(rb.position + force);
+			rb.MovePosition (rb.position + force);
 		}
+		return force;
+	}
+
+	Vector2 HandleControlsRelative(float timestep) {
+		Vector2 force = GetForce ();
+
+		if (force != Vector2.zero) {
+			force = (force.normalized) * Speed * timestep;
+			rb.AddRelativeForce (force);
+		}
+		return force;
 	}
 
 	private Vector2 GetForce() {
