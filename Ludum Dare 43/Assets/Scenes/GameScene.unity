@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 33385592}
   - component: {fileID: 33385591}
   - component: {fileID: 33385590}
+  - component: {fileID: 33385593}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -139,7 +140,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33385588}
   m_LocalRotation: {x: 0.08832619, y: 0.08529561, z: 0.009724905, w: 0.99238527}
-  m_LocalPosition: {x: 1.98, y: 1.33, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1455082956}
@@ -203,6 +204,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33385588}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &33385593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33385588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9509a1932fd06ae47ada4ffc5b838197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &298983233 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8508593036191472836, guid: 6af950b030688464a96bc8a6af24f677,
@@ -596,7 +609,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455082954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.266165, y: -1.1180645, z: 0.03698047}
+  m_LocalPosition: {x: 11.97, y: 1.63, z: 0.03698047}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 33385589}
@@ -1117,6 +1130,16 @@ PrefabInstance:
         type: 3}
       propertyPath: onHitScript.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 298983233}
+      objectReference: {fileID: 298983234}
+    - target: {fileID: 3098417258225646195, guid: 6af950b030688464a96bc8a6af24f677,
+        type: 3}
+      propertyPath: onHitScript.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: onHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098417258225646195, guid: 6af950b030688464a96bc8a6af24f677,
+        type: 3}
+      propertyPath: onHitScript.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6af950b030688464a96bc8a6af24f677, type: 3}
