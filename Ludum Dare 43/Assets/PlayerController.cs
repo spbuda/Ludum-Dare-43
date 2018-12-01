@@ -14,11 +14,13 @@ public class PlayerController : MonoBehaviour, HittableThing {
 	private bool dead = false;
 	Rigidbody2D rb;
 	PlayerHealth healthOrb;
+	BaseSounds sounds;
 
 	private void OnEnable() {
 		energy = MaxEnergy;
 		rb = GetComponent<Rigidbody2D> ();
 		healthOrb = GetComponentInChildren<PlayerHealth> ();
+		sounds = GetComponent<BaseSounds> ();
 	}
 
 	void Update() {
@@ -33,11 +35,13 @@ public class PlayerController : MonoBehaviour, HittableThing {
 	public float HitAmount => Strength;
 	public void HitBy(HittableThing instigator) {
 		energy -= instigator.HitAmount;
+		sounds.OnHit ();
 	}
 	#endregion
 
 	void HandleActions(float timestep) {
 		if (Input.GetMouseButton (0)) {
+			sounds.OnShoot ();
 			energy -= timestep;
 
 			healthOrb.Resize (MaxEnergy, energy);
@@ -46,6 +50,8 @@ public class PlayerController : MonoBehaviour, HittableThing {
 				Vector3 lookPos = PlayerToMouse ();
 				rb.AddForce (lookPos.normalized * (-Speed * timestep));
 			}
+		} else {
+			sounds.StopShoot ();
 		}
 	}
 
@@ -65,10 +71,17 @@ public class PlayerController : MonoBehaviour, HittableThing {
 		transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
 	}
 
+	private bool warning = false;
 	void CheckLifeState() {
+		if(!warning && energy <= MaxEnergy * .3f) {
+			warning = true;
+			sounds.OnWarning ();
+		}
 		if(energy <= 0f) {
 			MainActions.Instance.LoseGame ();
 			dead = true;
+			sounds.StopShoot ();
+			sounds.OnDeath ();
 		}
 	}
 

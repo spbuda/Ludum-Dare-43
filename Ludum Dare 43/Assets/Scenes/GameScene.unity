@@ -367,6 +367,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 743806cf11c8e304e8a84bb4537da261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1333415634 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5563364145241097911, guid: ff25e269ec931ad45909135df888a173,
+    type: 3}
+  m_PrefabInstance: {fileID: 5563364144815380507}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1333415635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333415634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc456323cbe4a24784fd0fd273610af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shoot:
+    sounds:
+    - {fileID: 8300000, guid: 0027e976f5cb3e24fbfb95f1c86816f6, type: 3}
+    volume: 0.569
+    pitchVariance: 0.1
+    loop: 1
+  Bump:
+    sounds:
+    - {fileID: 8300000, guid: e46ef3301a5f2584d9baa523d8472027, type: 3}
+    - {fileID: 8300000, guid: 1cb04f05474bb0742987164320aa9559, type: 3}
+    volume: 1
+    pitchVariance: 0.1
+    loop: 0
+  Hit:
+    sounds:
+    - {fileID: 8300000, guid: ad5391e4da7066449a3de2b829c3f04c, type: 3}
+    volume: 1
+    pitchVariance: 0.1
+    loop: 0
+  Warning:
+    sounds:
+    - {fileID: 8300000, guid: de679bfc3ffc35146a1c50408de044bc, type: 3}
+    volume: 0.677
+    pitchVariance: 0
+    loop: 0
+  Death:
+    sounds:
+    - {fileID: 8300000, guid: 6387928a01231184e8ed456ee6030593, type: 3}
+    volume: 0.687
+    pitchVariance: 0
+    loop: 0
 --- !u!1 &1952888035
 GameObject:
   m_ObjectHideFlags: 0
