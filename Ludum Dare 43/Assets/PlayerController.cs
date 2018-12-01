@@ -57,11 +57,26 @@ public class PlayerController : MonoBehaviour {
 			beam.MakeBeam ();
 
 			//TODO: limit length if contact with target.
-			Vector2 target = (lookPos).normalized * BeamLength;
-			beam.UpdateBeam (BeamOrigin.transform.position, (Vector2) transform.position + target);
+			Vector2 origin = BeamOrigin.transform.position;
+			Vector2 target = lookPos.normalized;
+			target = ShootThing (origin, target);
+			beam.UpdateBeam (origin, origin + target);
 		} else {
 			sounds.StopShoot ();
 			beam.StopBeam ();
+		}
+	}
+
+	RaycastHit2D[] hit = new RaycastHit2D[1];
+	Vector2 ShootThing(Vector2 origin, Vector2 direction) {
+		int hits = Physics2D.RaycastNonAlloc (origin, direction, hit, BeamLength);
+		if(hits > 0 && hit[0].collider != null) {
+			if(hit[0].collider.tag == "Hittable") {
+				hit[0].collider.gameObject.GetComponent<OnHit> ().onHitScript.Invoke ();
+			}
+			return direction * hit[0].distance;
+		} else {
+			return direction * BeamLength;
 		}
 	}
 
