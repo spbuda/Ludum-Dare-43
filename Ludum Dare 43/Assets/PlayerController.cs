@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 	public float MaxEnergy = 100f;
+	public float Speed = 1f;
+
 	private float energy;
 	private bool dead = false;
+	Rigidbody2D rb;
+	PlayerHealth healthOrb;
 
 	private void OnEnable() {
 		energy = MaxEnergy;
+		rb = GetComponent<Rigidbody2D> ();
+		healthOrb = GetComponentInChildren<PlayerHealth> ();
 	}
 
 	void Update() {
 		if (!dead) {
-			HandleRotation ();
-
-			HandleControls ();
+			HandleActions ();
 
 			HandleCamera ();
 
@@ -23,8 +27,12 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	void HandleControls() {
+	void HandleActions() {
+		if (Input.GetMouseButton (0)) {
+			energy -= Time.deltaTime;
 
+			healthOrb.Resize (MaxEnergy, energy);
+		}
 	}
 
 	void HandleCamera() {
@@ -43,6 +51,40 @@ public class PlayerController : MonoBehaviour {
 		if(energy <= 0f) {
 			MainActions.Instance.LoseGame ();
 			dead = true;
+		}
+	}
+
+	private void FixedUpdate() {
+		if (!dead) {
+			HandleControls (Time.fixedDeltaTime);
+
+			HandleRotation ();
+		}
+	}
+
+	void HandleControls(float timestep) {
+		Vector2 force = Vector2.zero;
+		bool changed = false;
+		if (Input.GetKey (KeyCode.W)) {
+			force += Vector2.up;
+			changed = true;
+		}
+		if (Input.GetKey (KeyCode.S)) {
+			force += Vector2.down;
+			changed = true;
+		}
+		if (Input.GetKey (KeyCode.A)) {
+			force += Vector2.left;
+			changed = true;
+		}
+		if (Input.GetKey (KeyCode.D)) {
+			force += Vector2.right;
+			changed = true;
+		}
+
+		if (changed) {
+			force = force.normalized * Speed * timestep;
+			rb.AddForce (force);
 		}
 	}
 }
