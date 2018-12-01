@@ -125,8 +125,8 @@ QualitySettings:
     shadowmaskMode: 1
     blendWeights: 2
     textureQuality: 0
-    anisotropicTextures: 0
-    antiAliasing: 4
+    anisotropicTextures: 2
+    antiAliasing: 0
     softParticles: 0
     softVegetation: 1
     realtimeReflectionProbes: 0
