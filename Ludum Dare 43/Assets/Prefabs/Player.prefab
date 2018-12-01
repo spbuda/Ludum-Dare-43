@@ -158,15 +158,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7342c242a4c48d468e9c426d2c6b5a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxEnergy: 100
+  MaxEnergy: 10
   Speed: 5000
   Strength: 2
-  BeamLength: 10
-  BeamOrigin: {fileID: 2352586032295951598}
-  BeamPrefab: {fileID: 249767115341585106, guid: 7736524722513194da854a6f5fc54f55,
-    type: 3}
-  FireForce: 0
-  MoveType: 2
+  FireForce: 1
+  MoveForce: 1
 --- !u!50 &3016063548764109828
 Rigidbody2D:
   serializedVersion: 4

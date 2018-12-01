@@ -2,37 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MoveType { Force, Direct, Relative }
 public class PlayerController : MonoBehaviour {
 	public float MaxEnergy = 100f;
 	public float Speed = 1f;
 	public float Strength = 1f;
-	public float BeamLength = 10f;
-	public GameObject BeamOrigin;
-	public BeamEffectController BeamPrefab;
 
 	public bool FireForce = false;
-	public MoveType MoveType = MoveType.Relative;
+	public bool MoveForce = true;
 
 	private float energy;
 	private bool dead = false;
 	Rigidbody2D rb;
 	PlayerHealth healthOrb;
 	BaseSounds sounds;
-	BeamEffectController beam;
 
 	private void OnEnable() {
 		energy = MaxEnergy;
 		rb = GetComponent<Rigidbody2D> ();
 		healthOrb = GetComponentInChildren<PlayerHealth> ();
 		sounds = GetComponent<BaseSounds> ();
-		if(beam != null) {
-			Destroy (beam);
-		}
-		if(BeamOrigin == null) {
-			BeamOrigin = gameObject;
-		}
-		beam = Instantiate (BeamPrefab, transform);
 	}
 
 	void Update() {
@@ -50,18 +38,12 @@ public class PlayerController : MonoBehaviour {
 
 			healthOrb.Resize (MaxEnergy, energy);
 
-			Vector2 lookPos = PlayerToMouse ().normalized;
 			if (FireForce) {
-				rb.AddForce (lookPos * (-Speed * timestep));
+				Vector3 lookPos = PlayerToMouse ();
+				rb.AddForce (lookPos.normalized * (-Speed * timestep));
 			}
-			beam.MakeBeam ();
-			
-			//TODO: limit length if contact with target.
-			Vector2 target = (lookPos).normalized * BeamLength;
-			beam.UpdateBeam (BeamOrigin.transform.position, (Vector2) transform.position + target);
 		} else {
 			sounds.StopShoot ();
-			beam.StopBeam ();
 		}
 	}
 
@@ -70,7 +52,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private Vector3 PlayerToMouse() {
-		Vector2 mousePos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y);
+		Vector3 mousePos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 10);
 		Vector3 lookPos = Camera.main.ScreenToWorldPoint (mousePos);
 		return lookPos - transform.position;
 	}
@@ -88,18 +70,16 @@ public class PlayerController : MonoBehaviour {
 			sounds.OnWarning ();
 		}
 		if(energy <= 0f) {
+			MainActions.Instance.LoseGame ();
 			dead = true;
 			sounds.StopShoot ();
 			sounds.OnDeath ();
-			beam.StopBeam ();
-
-			MainActions.Instance.LoseGame ();
 		}
 	}
 
 	private void FixedUpdate() {
 		if (!dead) {
-			HandleControls (Time.fixedDeltaTime);
+			HandleControlsForce (Time.fixedDeltaTime);
 
 			HandleRotation ();
 
