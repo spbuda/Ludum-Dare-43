@@ -4760,7 +4760,7 @@ MonoBehaviour:
   LaunchSound:
     sounds:
     - {fileID: 8300000, guid: 5a1430628c917d84b8baf1a9cc330e06, type: 3}
-    volume: 1
+    volume: 0.5
     pitchVariance: 0.15
     loop: 0
 --- !u!50 &162112808196188634

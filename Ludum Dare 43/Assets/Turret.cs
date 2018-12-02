@@ -20,11 +20,13 @@ public class Turret : MonoBehaviour {
 	private RaycastHit2D[] hits = new RaycastHit2D[1];
 	private bool firing;
 	private new ExtendedAudioSource audio;
-
+	bool dead = false;
 	void Update() {
+		if (dead) { return; }
 		if(Energy <= 0f) {
 			audio.Play (DeathSound);
 			Destroy (Main);
+			dead = true;
 			return;
 		}
 
