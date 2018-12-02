@@ -72,8 +72,10 @@ public class PlayerController : MonoBehaviour {
 		if (staticEffect.gameObject.GetComponent<SpeedPad> () != null) {
 			speedModifier = staticEffect.gameObject.GetComponent<SpeedPad> ().speedMod;
 		}
-		if (staticEffect.gameObject.GetComponent<CollisionDamage> () != null) {
-			energy -= staticEffect.gameObject.GetComponent<CollisionDamage> ().energyDamage;
+		CollisionDamage dmg = staticEffect.gameObject.GetComponent<CollisionDamage> ();
+		if (dmg != null) {
+			energy -= dmg.energyDamage;
+			sounds.OnSoundType (dmg.sound);
 			if (energy > MaxEnergy) {
 				energy = MaxEnergy;
 			}

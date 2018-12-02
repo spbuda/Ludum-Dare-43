@@ -4757,6 +4757,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518970880ff22ea4fa71ee361199b667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LaunchSound:
+    sounds:
+    - {fileID: 8300000, guid: 5a1430628c917d84b8baf1a9cc330e06, type: 3}
+    volume: 1
+    pitchVariance: 0.15
+    loop: 0
+  DetonateSound:
+    sounds:
+    - {fileID: 8300000, guid: cdbf498d04e2da347aab968f4e42151b, type: 3}
+    volume: 1
+    pitchVariance: 0.2
+    loop: 0
 --- !u!50 &162112808196188634
 Rigidbody2D:
   serializedVersion: 4

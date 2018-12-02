@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Tools;
 
 public class Turret : MonoBehaviour {
 	public GameObject Main;
 	public GameObject BulletOrigin;
+	public SoundEffect DeathSound;
 	public float Energy = 10f;
 
 	public float BulletSpeed = 1f;
@@ -17,11 +19,12 @@ public class Turret : MonoBehaviour {
 
 	private RaycastHit2D[] hits = new RaycastHit2D[1];
 	private bool firing;
+	private new ExtendedAudioSource audio;
 
 	void Update() {
 		if(Energy <= 0f) {
-			//TODO: explode thing.
-			Destroy (this.gameObject);
+			audio.Play (DeathSound);
+			Destroy (Main);
 			return;
 		}
 
@@ -52,6 +55,9 @@ public class Turret : MonoBehaviour {
 		firing = false;
 	}
 
+	private void Awake() {
+		audio = ExtendedAudioSource.Prepare (gameObject);
+	}
 	private void OnEnable() {
 		firing = false;
 	}
