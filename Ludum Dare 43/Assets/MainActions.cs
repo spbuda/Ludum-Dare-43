@@ -57,7 +57,7 @@ public class MainActions : ScriptableObject {
 	}
 
 	public enum SceneName {
-		TheHorseShoe, SpeedPadIntro, ButtonTurretIntro, Level3, SpikeAndDotPadIntro, LevelFinal
+		TheHorseShoe, SpeedPadIntro, ButtonTurretIntro, HealthIntro, SpikeAndDotPadIntro, LevelFinal
 	};
 
 	public PlayerController Player { get; set; } = null;
