@@ -7,6 +7,7 @@ public class BaseSounds : MonoBehaviour {
 	public SoundEffect Shoot;
 	public SoundEffect Bump;
 	public SoundEffect Hit;
+	public SoundEffect Health;
 	public SoundEffect Warning;
 	public SoundEffect Death;
 
@@ -26,7 +27,24 @@ public class BaseSounds : MonoBehaviour {
 			shoot.Play ();
 		}
 	}
-	
+
+	public void OnSoundType(SoundType type) {
+		switch (type) {
+		case SoundType.Bullet:
+			OnHit ();
+			break;
+		case SoundType.Wall:
+			OnBump ();
+			break;
+		case SoundType.Buff:
+			OnHealth ();
+			break;
+		case SoundType.None:
+		default:
+			break;
+		}
+	}
+
 	public void StopShoot() {
 		if (Shooting) {
 			shoot.Source.Stop ();
@@ -43,6 +61,10 @@ public class BaseSounds : MonoBehaviour {
 
 	public void OnDeath() {
 		alert.Play (Death);
+	}
+
+	public void OnHealth() {
+		alert.Play (Health);
 	}
 
 	public void OnHit() {

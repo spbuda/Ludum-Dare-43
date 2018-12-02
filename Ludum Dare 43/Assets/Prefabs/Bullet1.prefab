@@ -4757,6 +4757,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518970880ff22ea4fa71ee361199b667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LaunchSound:
+    sounds:
+    - {fileID: 8300000, guid: 5a1430628c917d84b8baf1a9cc330e06, type: 3}
+    volume: 0.5
+    pitchVariance: 0.15
+    loop: 0
 --- !u!50 &162112808196188634
 Rigidbody2D:
   serializedVersion: 4
@@ -4790,6 +4796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d249559b310f24890a1aaf982f1256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: 1
   energyDamage: -1
 --- !u!58 &2060778813338234012
 CircleCollider2D:

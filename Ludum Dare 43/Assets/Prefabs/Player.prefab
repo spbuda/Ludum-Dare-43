@@ -4925,13 +4925,19 @@ MonoBehaviour:
     sounds:
     - {fileID: 8300000, guid: e46ef3301a5f2584d9baa523d8472027, type: 3}
     volume: 1
-    pitchVariance: 0
+    pitchVariance: 0.1
     loop: 0
   Hit:
     sounds:
-    - {fileID: 8300000, guid: ad5391e4da7066449a3de2b829c3f04c, type: 3}
+    - {fileID: 8300000, guid: cdbf498d04e2da347aab968f4e42151b, type: 3}
     volume: 1
-    pitchVariance: 0
+    pitchVariance: 0.1
+    loop: 0
+  Health:
+    sounds:
+    - {fileID: 8300000, guid: e8f5c2c20cf08bf428be22688705e2ea, type: 3}
+    volume: 0.5
+    pitchVariance: 0.1
     loop: 0
   Warning:
     sounds:

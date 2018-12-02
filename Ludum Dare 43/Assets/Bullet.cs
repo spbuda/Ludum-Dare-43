@@ -1,19 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Tools;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 	float speed = 1f;
 	float damage = 1f;
 	float lifetime = 10f;
+	public SoundEffect LaunchSound;
+
 	Rigidbody2D rb;
+	private new ExtendedAudioSource audio = null;
 	public bool Active { get; private set; }
+
 	private void OnDisable() {
 		Active = false;
 		rb = null;
 	}
 
 	public void Init(float speed, float damage, float lifetime, Vector2 position, Vector2 target) {
+		if(audio == null) {
+			audio = ExtendedAudioSource.Prepare (gameObject, LaunchSound);
+		}
 		rb = GetComponent<Rigidbody2D> ();
 		Active = true;
 		transform.position = position;
@@ -24,6 +32,7 @@ public class Bullet : MonoBehaviour {
 		rb.drag = 0f;
 		rb.velocity = (target - position).normalized * speed;
 		GetComponent<CollisionDamage> ().energyDamage = damage;
+		audio.Play ();
 		//rb.AddForce ();
 	}
 

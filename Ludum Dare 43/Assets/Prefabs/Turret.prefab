@@ -157,6 +157,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Main: {fileID: 3260682730085198068}
   BulletOrigin: {fileID: 6613645590699817355}
+  DeathSound:
+    sounds:
+    - {fileID: 8300000, guid: 6c6dff1bb27a42e4b971a186055d5b77, type: 3}
+    volume: 1
+    pitchVariance: 0.1
+    loop: 0
   Energy: 10
   BulletSpeed: 2
   BulletDamage: 0.1
