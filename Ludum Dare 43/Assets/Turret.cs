@@ -37,29 +37,32 @@ public class Turret : MonoBehaviour {
 		}
 
 		if (MainActions.Instance.Player) {
-			Vector3 target = MainActions.Instance.Player.transform.position;
-			Vector3 dir = target - transform.position;
+			Transform target = MainActions.Instance.Player.transform, origin = BulletOrigin.transform;
+			//Vector3 dir = target.position - transform.position;
+
+			Vector3 dir = target.position - transform.position;
+			float angle = (Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg) - 90f;
+			Main.transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
 
 			//Check if recharging
 			if (!firing) {
-				float angle = (Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg) - 90f;
-				Main.transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
-				dir = target - BulletOrigin.transform.position;
-				Debug.DrawRay (BulletOrigin.transform.position, dir * FireRange, Color.red);
-				int hit = Physics2D.RaycastNonAlloc (BulletOrigin.transform.position, dir, hits, FireRange);
 				if (!charging) {
+					dir = target.position - origin.position;
+					Debug.DrawRay (origin.position, dir * FireRange, Color.red);
+					int hit = Physics2D.RaycastNonAlloc (origin.position, dir, hits, FireRange);
 					//Can we see the player
 					if (hit > 0 && hits[0].collider != null && hits[0].collider.gameObject == MainActions.Instance.Player.gameObject) {
 						//TODO: aim at player.
-						StartCoroutine (Fire (BulletOrigin.transform.position, target));
+						StartCoroutine (Fire (origin, target));
 					}
 				}
 			}
 		}
 	}
 
-	IEnumerator Fire(Vector2 origin, Vector2 target) {
-		float colorIntensity = 5f, fireDisperse = .3f, fireRecharge = .3f, time = 0f;
+	IEnumerator Fire(Transform origin, Transform target) {
+		float colorIntensity = 5f, fireDisperse = .3f, fireRecharge = .3f, time = 0f, angle;
+		Vector2 dir;
 		charging = true;
 		Vector4 color = mat.GetVector ("_EmissionColor");
 		while (time < FireChargeTime) {
@@ -68,7 +71,7 @@ public class Turret : MonoBehaviour {
 			time += Time.deltaTime;
 			yield return null;
 		}
-		BulletPool.Instance.Next (BulletSpeed, BulletDamage, BulletLifetime, origin, target);
+		BulletPool.Instance.Next (BulletSpeed, BulletDamage, BulletLifetime, origin.position, target.position);
 
 		float adjustedFireRate = FireRate - fireDisperse - fireRecharge;
 		time = 0f;
