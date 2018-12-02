@@ -5,11 +5,11 @@ using Tools;
 
 public class PlayPickupSound : MonoBehaviour
 {
-	public SoundEffect pickupSound;
+	//public SoundEffect pickupSound;
 
 	void OnTriggerEnter2D(Collider2D collider) {
 		if (collider.gameObject.tag == "Player") {
-			pickupSound.Play ();
+			//pickupSound.Play();
 		}
 	}
 }
