@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour {
 		Camera c = Camera.main;
 		c.transform.position = new Vector3 (transform.position.x, transform.position.y, c.transform.position.z);
 		if(ScreenShake == ShakeState.Trigger) {
-			StartCoroutine(ShakeCamera (c, .3f, 16f));
+			StartCoroutine(ShakeCamera (c, 1.6f, 180f));
 		}
 	}
 
@@ -161,11 +161,10 @@ public class PlayerController : MonoBehaviour {
 		ScreenShake = ShakeState.Shaking;
 		float currentTime = 0f;
 		Quaternion startRot = camera.transform.localRotation;
+		Vector3 next = startRot.eulerAngles;
 		while (currentTime < time) {
 			float currentIntensity = Tools.Ease.Linear.From (intensity, 0f, currentTime, time);
-			Vector3 next = camera.transform.localRotation.eulerAngles;
-			next = new Vector3 (next.x, next.y, next.z + Random.Range (-intensity, intensity));
-			camera.transform.localRotation = Quaternion.RotateTowards (camera.transform.localRotation, Quaternion.Euler(next), 20f * Time.deltaTime);
+			camera.transform.localRotation = Quaternion.RotateTowards (camera.transform.localRotation, Quaternion.Euler(new Vector3 (next.x, next.y, next.z + Random.Range (-currentIntensity, currentIntensity))), intensity * Time.deltaTime);
 			yield return null;
 			currentTime += Time.deltaTime;
 		}
