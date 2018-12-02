@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour {
 	BeamEffectController beam;
 	BeamImpact beamImpact;
 	ThrusterController thrusters;
+	TakeDamage takeDamageParticles;
 	bool noMovement = true;
 
 	private void OnEnable() {
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		beam = Instantiate (BeamPrefab, transform);
 		beamImpact = Instantiate (BeamImpactPrefab, BeamOrigin.transform);
+		takeDamageParticles = GetComponentInChildren<TakeDamage> ();
 		MainActions.Instance.Player = this;
 	}
 	private void OnDisable() {
@@ -66,6 +68,7 @@ public class PlayerController : MonoBehaviour {
 			energy -= dmg.energyDamage;
 			sounds.OnSoundType (dmg.sound);
 			TriggerShake ();
+			takeDamageParticles.At (collisionD.GetContact (0).point);
 		} else {
 			Debug.LogError ("Improperly configured collision object without collision damage - " + collisionD.gameObject.name);
 		}
