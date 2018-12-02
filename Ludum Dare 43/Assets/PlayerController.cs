@@ -20,11 +20,13 @@ public class PlayerController : MonoBehaviour {
 	PlayerHealth healthOrb;
 	BaseSounds sounds;
 	BeamEffectController beam;
+	ThrusterController thrusters;
 
 	private void OnEnable() {
 		energy = MaxEnergy;
 		rb = GetComponent<Rigidbody2D> ();
 		healthOrb = GetComponentInChildren<PlayerHealth> ();
+		thrusters = GetComponentInChildren<ThrusterController> ();
 		sounds = GetComponent<BaseSounds> ();
 		if (beam != null) {
 			Destroy (beam);
@@ -46,6 +48,8 @@ public class PlayerController : MonoBehaviour {
 			CheckLifeState ();
 
 			healthOrb.Resize (MaxEnergy, energy);
+
+			thrusters.UpdateRotation (Time.deltaTime);
 		}
 	}
 
@@ -184,6 +188,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (!Tools.Calcu.ZeroIsh (force)) {
+			thrusters.ThrustAt (force);
 			energy -= Time.fixedDeltaTime;
 		}
 	}
