@@ -15,10 +15,10 @@ EditorBuildSettings:
     path: Assets/Scenes/SpencerScene.unity
     guid: 1b61bd86dd3d3a44e860f5bc9ceb9b56
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
+    path: Assets/Scenes/SpeedPadIntro.unity
     guid: c7739bceb394fe7419396d9dc04dce43
   - enabled: 1
-    path: Assets/Scenes/Level2.unity
+    path: Assets/Scenes/ButtonTurretIntro.unity
     guid: 77c320c3025e71245be199f06cacac85
   - enabled: 1
     path: Assets/Scenes/Level3.unity
