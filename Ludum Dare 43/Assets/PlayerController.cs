@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 	public float BeamLength = 10f;
 	public GameObject BeamOrigin;
 	public BeamEffectController BeamPrefab;
+	public BeamImpact BeamImpactPrefab;
 
 	public bool FireForce = false;
 	public MoveType MoveType = MoveType.Relative;
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour {
 	PlayerHealth healthOrb;
 	BaseSounds sounds;
 	BeamEffectController beam;
+	BeamImpact beamImpact;
 	ThrusterController thrusters;
 
 	private void OnEnable() {
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour {
 			BeamOrigin = gameObject;
 		}
 		beam = Instantiate (BeamPrefab, transform);
+		beamImpact = Instantiate (BeamImpactPrefab, BeamOrigin.transform);
 		MainActions.Instance.Player = this;
 	}
 	private void OnDisable() {
@@ -120,6 +123,7 @@ public class PlayerController : MonoBehaviour {
 		} else {
 			sounds.StopShoot ();
 			beam.StopBeam ();
+			beamImpact.TriggerImpact (false);
 		}
 	}
 
@@ -135,10 +139,14 @@ public class PlayerController : MonoBehaviour {
 					if (hit[i].collider.tag == "Hittable") {
 						hit[i].collider.gameObject.GetComponent<OnHit> ().onHitScript.Invoke ();
 					}
+					beamImpact.ImpactDistance (hit[i].distance);
+					beamImpact.TriggerImpact (true);
 					return direction * hit[i].distance;
 				}
 			}
 		}
+
+		beamImpact.TriggerImpact (false);
 		return direction * BeamLength;
 	}
 
