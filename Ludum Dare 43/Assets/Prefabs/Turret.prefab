@@ -159,7 +159,7 @@ MonoBehaviour:
   BulletOrigin: {fileID: 6613645590699817355}
   Energy: 10
   BulletSpeed: 2
-  BulletDamage: 0.5
+  BulletDamage: 0.1
   BulletLifetime: 10
   FireRange: 20
   FireChargeTime: 0.4

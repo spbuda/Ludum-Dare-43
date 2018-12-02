@@ -23,6 +23,7 @@ public class Bullet : MonoBehaviour {
 		this.lifetime = lifetime;
 		rb.drag = 0f;
 		rb.velocity = (target - position).normalized * speed;
+		GetComponent<CollisionDamage> ().energyDamage = damage;
 		//rb.AddForce ();
 	}
 
