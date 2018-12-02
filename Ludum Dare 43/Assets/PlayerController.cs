@@ -249,7 +249,9 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKey (KeyCode.D)) {
 			force += Vector2.right;
 		}
-
+		if (Input.GetKeyDown (KeyCode.W) || Input.GetKeyDown (KeyCode.S) || Input.GetKeyDown (KeyCode.A) || Input.GetKeyDown (KeyCode.D)) {
+			sounds.Moving ();
+		}
 		return force;
 	}
 }

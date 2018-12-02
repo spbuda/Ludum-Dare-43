@@ -10,15 +10,18 @@ public class BaseSounds : MonoBehaviour {
 	public SoundEffect Health;
 	public SoundEffect Warning;
 	public SoundEffect Death;
+	public SoundEffect Movement;
 
 	private ExtendedAudioSource shoot;
 	private ExtendedAudioSource hit;
 	private ExtendedAudioSource alert;
+	private ExtendedAudioSource move;
 
 	void Start() {
 		shoot = ExtendedAudioSource.Prepare (this.gameObject, Shoot);
 		hit = ExtendedAudioSource.Prepare (this.gameObject, Hit);
 		alert = ExtendedAudioSource.Prepare (this.gameObject);
+		move = ExtendedAudioSource.Prepare (this.gameObject, Movement);
 	}
 
 	public bool Shooting => shoot.Source.isPlaying;
@@ -69,5 +72,9 @@ public class BaseSounds : MonoBehaviour {
 
 	public void OnHit() {
 		hit.Play ();
+	}
+
+	public void Moving() {
+		move.Play ();
 	}
 }
