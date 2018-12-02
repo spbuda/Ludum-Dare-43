@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void TriggerShake() {
 		if(ScreenShake == ShakeState.Still) {
-			//ScreenShake = ShakeState.Trigger;
+			ScreenShake = ShakeState.Trigger;
 		}
 	}
 	private enum ShakeState { Still, Trigger, Shaking }
@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour {
 		Camera c = Camera.main;
 		c.transform.position = new Vector3 (transform.position.x, transform.position.y, c.transform.position.z);
 		if(ScreenShake == ShakeState.Trigger) {
-			StartCoroutine(ShakeCamera (c, 1.6f, 180f));
+			StartCoroutine(ShakeCamera (c, .15f, 40f));
 		}
 	}
 
