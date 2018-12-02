@@ -565,7 +565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: 2
-  energyDamage: 10
+  energyDamage: 7
 --- !u!1 &4205096367751497112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1237,4 +1237,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b95a142c6aad847a939266b1ff4320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dOT: 1
+  dOT: 0.6
