@@ -22,7 +22,7 @@ public class MainActions : ScriptableObject {
 	
 	public void StartGame() {
 		TotalScore = 0f;
-		SceneManager.LoadScene(SceneFromEnum (SceneName.Level1), LoadSceneMode.Single);
+		SceneManager.LoadScene(SceneFromEnum (SceneName.ButtonTurretIntro), LoadSceneMode.Single);
 	}
 
 
