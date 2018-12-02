@@ -25,6 +25,6 @@ public class BeamImpact : MonoBehaviour {
 	}
 
 	public void ImpactDistance(float distance) {
-		transform.localPosition = new Vector3 (transform.localPosition.x, distance, transform.localPosition.z);
+		transform.localPosition = new Vector3 (transform.localPosition.x, distance + 1.44f, transform.localPosition.z);
 	}
 }
