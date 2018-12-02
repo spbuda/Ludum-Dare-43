@@ -16,19 +16,42 @@ public class MainActions : ScriptableObject {
 	}
 
 	[SerializeField]
-	private GameObject LosePopup;
+	private LosePopup LosePopup;
+
+
+	public float TotalScore = 0f;
 	
 	public void StartGame() {
-		SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+		TotalScore = 0f;
+		SceneManager.LoadScene(SceneFromEnum (SceneName.Level1), LoadSceneMode.Single);
+	}
+
+
+	public void NextScene(float score, SceneName scene) {
+		TotalScore += score;
+		SceneManager.LoadScene (SceneFromEnum(scene), LoadSceneMode.Single);
+	}
+
+	public void RestartScene() {
+		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
 	}
 
 	public void LoseGame() {
-		Instantiate (LosePopup, Vector3.zero, Quaternion.identity);
+		LosePopup pop = Instantiate (LosePopup, Vector3.zero, Quaternion.identity);
+		pop.ChangeScore (TotalScore);
 	}
 
 	public void QuitGame() {
 		SceneManager.LoadScene ("MenuScene", LoadSceneMode.Single);
 	}
+
+	public string SceneFromEnum(SceneName name) {
+		return name.ToString ();
+	}
+
+	public enum SceneName {
+		Level1, Level2, Level3
+	};
 
 	public PlayerController Player { get; set; } = null;
 }
