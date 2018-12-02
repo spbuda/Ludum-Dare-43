@@ -36,9 +36,11 @@ public class BulletPool : ScriptableObject {
 				}
 			} else {
 				bullet = Instantiate (BulletPrefab);
+				DontDestroyOnLoad (bullet);
 			}
 		} else {
 			bullet = Instantiate (BulletPrefab);
+			DontDestroyOnLoad (bullet);
 		}
 
 		pool.Enqueue (bullet);
