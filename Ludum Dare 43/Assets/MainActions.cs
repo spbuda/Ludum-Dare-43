@@ -57,7 +57,7 @@ public class MainActions : ScriptableObject {
 	}
 
 	public enum SceneName {
-		Level1, Level2, Level3, LevelFinal
+		SpeedPadIntro, Level2, Level3, SpikeAndDotPadIntro, LevelFinal
 	};
 
 	public PlayerController Player { get; set; } = null;
