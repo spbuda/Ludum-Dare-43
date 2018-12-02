@@ -4762,7 +4762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: 3
-  energyDamage: -25
+  energyDamage: -5
 --- !u!114 &4457151555189090892
 MonoBehaviour:
   m_ObjectHideFlags: 0

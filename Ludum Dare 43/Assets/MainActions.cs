@@ -22,7 +22,7 @@ public class MainActions : ScriptableObject {
 	
 	public void StartGame() {
 		TotalScore = 0f;
-		SceneManager.LoadScene(SceneFromEnum (SceneName.ButtonTurretIntro), LoadSceneMode.Single);
+		SceneManager.LoadScene(SceneFromEnum (SceneName.TheHorseShoe), LoadSceneMode.Single);
 	}
 
 
@@ -57,7 +57,7 @@ public class MainActions : ScriptableObject {
 	}
 
 	public enum SceneName {
-		SpeedPadIntro, ButtonTurretIntro, Level3, SpikeAndDotPadIntro, LevelFinal
+		TheHorseShoe, SpeedPadIntro, ButtonTurretIntro, Level3, SpikeAndDotPadIntro, LevelFinal
 	};
 
 	public PlayerController Player { get; set; } = null;
