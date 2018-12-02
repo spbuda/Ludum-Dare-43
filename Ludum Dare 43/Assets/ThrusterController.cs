@@ -7,7 +7,7 @@ public class ThrusterController : MonoBehaviour {
 	
 	ParticleSystem[] Thrust;
 	SpriteRenderer Sprite;
-	private bool isThrust = false;
+	private bool isThrust = true;
 
 	private void Awake() {
 		Thrust = GetComponentsInChildren<ParticleSystem> ();
