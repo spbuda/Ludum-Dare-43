@@ -17,8 +17,7 @@ public class MainActions : ScriptableObject {
 
 	[SerializeField]
 	private LosePopup LosePopup;
-
-
+	
 	public float TotalScore = 0f;
 	
 	public void StartGame() {
@@ -36,8 +35,16 @@ public class MainActions : ScriptableObject {
 		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
 	}
 
+	public void WinGame(float score) {
+		LosePopup pop = Instantiate (LosePopup, Vector3.zero, Quaternion.identity);
+
+		pop.ChangeScore (TotalScore);
+		pop.GetComponentInChildren<RetryButton> ().gameObject.SetActive (false);
+	}
+
 	public void LoseGame() {
 		LosePopup pop = Instantiate (LosePopup, Vector3.zero, Quaternion.identity);
+
 		pop.ChangeScore (TotalScore);
 	}
 
@@ -50,7 +57,7 @@ public class MainActions : ScriptableObject {
 	}
 
 	public enum SceneName {
-		Level1, Level2, Level3
+		Level1, Level2, Level3, LevelFinal
 	};
 
 	public PlayerController Player { get; set; } = null;

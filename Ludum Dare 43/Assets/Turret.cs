@@ -32,6 +32,7 @@ public class Turret : MonoBehaviour {
 			GetComponentsInChildren<Transform> ().Where (t => t.name == "EnemyDeathFX").First ()?
 				.GetComponentsInChildren<ParticleSystem>().ToList().ForEach(p=> p.Play ());
 
+			StopAllCoroutines ();
 			dead = true;
 			return;
 		}
