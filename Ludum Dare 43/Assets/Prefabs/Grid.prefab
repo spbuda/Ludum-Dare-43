@@ -1070,7 +1070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: 0
-  energyDamage: 3
+  energyDamage: 1
 --- !u!1 &4205096367973784731
 GameObject:
   m_ObjectHideFlags: 0
