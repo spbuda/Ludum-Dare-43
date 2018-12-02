@@ -10,6 +10,6 @@ public class ThrusterController : MonoBehaviour {
 	}
 
 	public void UpdateRotation(float timestep) {
-		transform.rotation = Quaternion.RotateTowards (transform.rotation, targetRotation, 900f * timestep);
+		transform.localRotation = Quaternion.RotateTowards (transform.localRotation, targetRotation, 900f * timestep);
 	}
 }
