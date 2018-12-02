@@ -10,4 +10,9 @@ public class FinalPortal : MonoBehaviour {
 			Destroy (player.gameObject);
 		}
 	}
+
+	private void OnDrawGizmos() {
+		Gizmos.color = Color.magenta + Color.cyan;
+		Gizmos.DrawWireSphere (transform.position, 1f);
+	}
 }

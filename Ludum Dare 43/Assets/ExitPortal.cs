@@ -11,4 +11,9 @@ public class ExitPortal : MonoBehaviour {
 			MainActions.Instance.NextScene (player.Energy, Destination);
 		}
 	}
+
+	private void OnDrawGizmos() {
+		Gizmos.color = Color.magenta;
+		Gizmos.DrawWireSphere (transform.position, 1f);
+	}
 }
