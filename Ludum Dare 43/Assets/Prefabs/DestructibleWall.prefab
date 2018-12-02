@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2550402824896066420}
   - component: {fileID: 2550402824896066419}
   - component: {fileID: 2550402824896066418}
+  - component: {fileID: 9166280487636873917}
   - component: {fileID: 2550402824896066422}
   m_Layer: 0
   m_Name: DestructibleWall
@@ -134,6 +135,20 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!114 &9166280487636873917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2550402824896066416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d249559b310f24890a1aaf982f1256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: 0
+  energyDamage: 5
 --- !u!114 &2550402824896066422
 MonoBehaviour:
   m_ObjectHideFlags: 0
