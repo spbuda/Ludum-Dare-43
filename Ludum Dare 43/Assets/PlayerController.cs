@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void TriggerShake() {
 		if(ScreenShake == ShakeState.Still) {
-			ScreenShake = ShakeState.Trigger;
+			//ScreenShake = ShakeState.Trigger;
 		}
 	}
 	private enum ShakeState { Still, Trigger, Shaking }
