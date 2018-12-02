@@ -362,6 +362,7 @@ GameObject:
   - component: {fileID: 8508593036250349785}
   - component: {fileID: 3098417258225646195}
   - component: {fileID: 7889600850294672020}
+  - component: {fileID: 1643955268105854131}
   m_Layer: 0
   m_Name: Button1
   m_TagString: Hittable
@@ -475,3 +476,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb841f755edc5a428d679ff78f14d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1643955268105854131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8508593036250349790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d249559b310f24890a1aaf982f1256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: 0
+  energyDamage: 5
