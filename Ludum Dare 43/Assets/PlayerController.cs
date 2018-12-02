@@ -51,6 +51,9 @@ public class PlayerController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collisionD) {
 		energy -= collisionD.gameObject.GetComponent<CollisionDamage> ().energyDamage;
+		if (energy > MaxEnergy) {
+			energy = MaxEnergy;
+		}
 	}
 
 	void OnTriggerStay2D(Collider2D staticEffect) {
@@ -64,6 +67,12 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D staticEffect) {
 		if (staticEffect.gameObject.GetComponent<SpeedPad> () != null) {
 			speedModifier = staticEffect.gameObject.GetComponent<SpeedPad> ().speedMod;
+		}
+		if (staticEffect.gameObject.GetComponent<CollisionDamage> () != null) {
+			energy -= staticEffect.gameObject.GetComponent<CollisionDamage> ().energyDamage;
+			if (energy > MaxEnergy) {
+				energy = MaxEnergy;
+			}
 		}
 	}
 
