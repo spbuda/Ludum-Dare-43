@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelFinal.unity
     guid: 991a691abdd18d840b40d5df0d43eaa8
+  - enabled: 1
+    path: Assets/Scenes/SpikeAndDotPadIntro.unity
+    guid: 5d0d4a53620c8f14e930bb2838442165
   m_configObjects: {}
