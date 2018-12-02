@@ -44,13 +44,13 @@ public class PlayerController : MonoBehaviour {
 
 	void Update() {
 		if (!dead) {
-			HandleCamera ();
-
 			CheckLifeState ();
 
 			healthOrb.Resize (MaxEnergy, energy);
 
 			thrusters.UpdateRotation (Time.deltaTime);
+
+			HandleCamera ();
 		}
 	}
 
@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour {
 		if(dmg != null) {
 			energy -= dmg.energyDamage;
 			sounds.OnSoundType (dmg.sound);
+			TriggerShake ();
 		} else {
 			Debug.LogError ("Improperly configured collision object without collision damage - " + collisionD.gameObject.name);
 		}
@@ -87,6 +88,7 @@ public class PlayerController : MonoBehaviour {
 			if (energy > MaxEnergy) {
 				energy = MaxEnergy;
 			}
+			TriggerShake ();
 		}
 	}
 
@@ -96,10 +98,11 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-
-
 	void HandleActions(float timestep) {
 		if (Input.GetMouseButton (0)) {
+			if (Input.GetMouseButtonDown (0)) {
+				TriggerShake ();
+			}
 			sounds.OnShoot ();
 			energy -= timestep;
 
@@ -139,8 +142,34 @@ public class PlayerController : MonoBehaviour {
 		return direction * BeamLength;
 	}
 
+	private void TriggerShake() {
+		if(ScreenShake == ShakeState.Still) {
+			ScreenShake = ShakeState.Trigger;
+		}
+	}
+	private enum ShakeState { Still, Trigger, Shaking }
+	private ShakeState ScreenShake = ShakeState.Still;
 	void HandleCamera() {
-		Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -14f);
+		Camera c = Camera.main;
+		c.transform.position = new Vector3 (transform.position.x, transform.position.y, c.transform.position.z);
+		if(ScreenShake == ShakeState.Trigger) {
+			StartCoroutine(ShakeCamera (c, 1.6f, 180f));
+		}
+	}
+
+	private IEnumerator ShakeCamera(Camera camera, float time, float intensity) {
+		ScreenShake = ShakeState.Shaking;
+		float currentTime = 0f;
+		Quaternion startRot = camera.transform.localRotation;
+		Vector3 next = startRot.eulerAngles;
+		while (currentTime < time) {
+			float currentIntensity = Tools.Ease.Linear.From (intensity, 0f, currentTime, time);
+			camera.transform.localRotation = Quaternion.RotateTowards (camera.transform.localRotation, Quaternion.Euler(new Vector3 (next.x, next.y, next.z + Random.Range (-currentIntensity, currentIntensity))), intensity * Time.deltaTime);
+			yield return null;
+			currentTime += Time.deltaTime;
+		}
+		camera.transform.localRotation = startRot;
+		ScreenShake = ShakeState.Still;
 	}
 
 	private Vector2 PlayerToMouse() {
