@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
 
 	private float energy;
 	public float Energy => energy;
-	private bool dead = false;
+	public bool Dead { get; private set; } = false;
 	Rigidbody2D rb;
 	PlayerHealth healthOrb;
 	BaseSounds sounds;
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update() {
-		if (!dead) {
+		if (!Dead) {
 			CheckLifeState ();
 
 			healthOrb.Resize (MaxEnergy, energy);
@@ -205,7 +205,8 @@ public class PlayerController : MonoBehaviour {
 			sounds.OnWarning ();
 		}
 		if (energy <= 0f) {
-			dead = true;
+			Dead = true;
+			sounds.StopMoving ();
 			sounds.StopShoot ();
 			sounds.OnDeath ();
 			beam.StopBeam ();
@@ -215,7 +216,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void FixedUpdate() {
-		if (!dead) {
+		if (!Dead) {
 			HandleControls (Time.fixedDeltaTime);
 
 			HandleRotation ();
