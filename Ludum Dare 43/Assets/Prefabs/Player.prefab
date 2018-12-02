@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3016063548764109834}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2413967111152899981
 GameObject:
@@ -4757,7 +4757,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3016063548764109834}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3016063547559129326
 SpriteRenderer:
@@ -4838,10 +4838,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3016063547559129327}
   - {fileID: 3016063549220661918}
   - {fileID: 7504397832779521444}
   - {fileID: 4324054612685755127}
+  - {fileID: 3016063547559129327}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4951,6 +4951,12 @@ MonoBehaviour:
     volume: 0.66
     pitchVariance: 0
     loop: 0
+  Movement:
+    sounds:
+    - {fileID: 8300000, guid: 1f3c8306f169daa49b7637cc78562ea3, type: 3}
+    volume: 0.714
+    pitchVariance: 0
+    loop: 1
 --- !u!1 &3016063549220661919
 GameObject:
   m_ObjectHideFlags: 0
@@ -4981,7 +4987,7 @@ Transform:
   m_LocalScale: {x: 1.06, y: 1.06, z: 1.06}
   m_Children: []
   m_Father: {fileID: 3016063548764109834}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3016063549220661917
 SpriteRenderer:
@@ -9773,7 +9779,7 @@ Transform:
   - {fileID: 3161634624712748407}
   - {fileID: 5223407819042480859}
   m_Father: {fileID: 3016063548764109834}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7258099384695044069
 SpriteRenderer:
