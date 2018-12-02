@@ -4857,7 +4857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7342c242a4c48d468e9c426d2c6b5a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxEnergy: 10
+  MaxEnergy: 20
   Speed: 5000
   Strength: 2
   BeamLength: 30
