@@ -4763,12 +4763,6 @@ MonoBehaviour:
     volume: 1
     pitchVariance: 0.15
     loop: 0
-  DetonateSound:
-    sounds:
-    - {fileID: 8300000, guid: cdbf498d04e2da347aab968f4e42151b, type: 3}
-    volume: 1
-    pitchVariance: 0.2
-    loop: 0
 --- !u!50 &162112808196188634
 Rigidbody2D:
   serializedVersion: 4
@@ -4802,6 +4796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d249559b310f24890a1aaf982f1256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: 1
   energyDamage: -1
 --- !u!58 &2060778813338234012
 CircleCollider2D:

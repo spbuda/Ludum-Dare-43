@@ -54,7 +54,14 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collisionD) {
-		energy -= collisionD.gameObject.GetComponent<CollisionDamage> ().energyDamage;
+		CollisionDamage dmg = collisionD.gameObject.GetComponent<CollisionDamage> ();
+		if(dmg != null) {
+			energy -= dmg.energyDamage;
+			sounds.OnSoundType (dmg.sound);
+		} else {
+			Debug.LogError ("Improperly configured collision object without collision damage - " + collisionD.gameObject.name);
+		}
+
 		if (energy > MaxEnergy) {
 			energy = MaxEnergy;
 		}
