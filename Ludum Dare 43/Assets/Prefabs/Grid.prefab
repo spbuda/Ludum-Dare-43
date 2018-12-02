@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4205096366173442306}
   m_Layer: 0
   m_Name: Slow
-  m_TagString: Untagged
+  m_TagString: Shootover
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -608,7 +608,7 @@ GameObject:
   - component: {fileID: 4205096366634655629}
   m_Layer: 0
   m_Name: Speed
-  m_TagString: Untagged
+  m_TagString: Shootover
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -905,7 +905,7 @@ GameObject:
   - component: {fileID: 4205096366725196132}
   m_Layer: 0
   m_Name: Spikes
-  m_TagString: Untagged
+  m_TagString: Shootover
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1158,6 +1158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d249559b310f24890a1aaf982f1256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: 0
   energyDamage: 10
 --- !u!1 &4205096367751497112
 GameObject:
@@ -3138,6 +3139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d249559b310f24890a1aaf982f1256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: 0
   energyDamage: 3
 --- !u!1 &4205096367973784731
 GameObject:
@@ -3154,7 +3156,7 @@ GameObject:
   - component: {fileID: 4205096367973784735}
   m_Layer: 0
   m_Name: DOT
-  m_TagString: Untagged
+  m_TagString: Shootover
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
