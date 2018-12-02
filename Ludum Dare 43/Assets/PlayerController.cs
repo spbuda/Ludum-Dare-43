@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour {
 		int hits = Physics2D.RaycastNonAlloc (origin, direction, hit, BeamLength);
 		if(hits > 0) {
 			int i = 0;
-			while (i <= hits) {
+			while (i < hits) {
 				if(hit[i].collider.tag == "Shootover") {
 					i++;
 				} else {

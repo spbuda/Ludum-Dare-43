@@ -564,7 +564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d249559b310f24890a1aaf982f1256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: 0
+  sound: 2
   energyDamage: 10
 --- !u!1 &4205096367751497112
 GameObject:
@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d249559b310f24890a1aaf982f1256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: 0
+  sound: 2
   energyDamage: 1
 --- !u!1 &4205096367973784731
 GameObject:
