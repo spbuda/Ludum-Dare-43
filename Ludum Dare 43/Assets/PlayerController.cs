@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
 	BaseSounds sounds;
 	BeamEffectController beam;
 	ThrusterController thrusters;
+	bool noMovement = true;
 
 	private void OnEnable() {
 		energy = MaxEnergy;
@@ -51,6 +52,8 @@ public class PlayerController : MonoBehaviour {
 			thrusters.UpdateRotation (Time.deltaTime);
 
 			HandleCamera ();
+
+			MoveSoundDetect ();
 		}
 	}
 
@@ -279,9 +282,18 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKey (KeyCode.D)) {
 			force += Vector2.right;
 		}
-		if (Input.GetKeyDown (KeyCode.W) || Input.GetKeyDown (KeyCode.S) || Input.GetKeyDown (KeyCode.A) || Input.GetKeyDown (KeyCode.D)) {
-			sounds.Moving ();
-		}
+
 		return force;
+	}
+
+	private void MoveSoundDetect() {
+		if (noMovement && (Input.GetKeyDown (KeyCode.W) || Input.GetKeyDown (KeyCode.S) || Input.GetKeyDown (KeyCode.A) || Input.GetKeyDown (KeyCode.D))) {
+			noMovement = false;
+			sounds.Moving ();
+		} 
+		else if (!noMovement && !(Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.S) || Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.D))) {
+			noMovement = true;
+			sounds.StopMoving ();
+		}
 	}
 }

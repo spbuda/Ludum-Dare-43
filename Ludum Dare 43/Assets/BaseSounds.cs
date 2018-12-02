@@ -74,7 +74,15 @@ public class BaseSounds : MonoBehaviour {
 		hit.Play ();
 	}
 
+	public bool isMoving => move.Source.isPlaying;
 	public void Moving() {
-		move.Play ();
+		if (!isMoving) {
+			move.Play ();
+		}
+	}
+	public void StopMoving() {
+		if (isMoving) {
+			move.Source.Stop ();
+		}
 	}
 }
