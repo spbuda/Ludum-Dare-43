@@ -31,6 +31,9 @@ public class BulletPool : ScriptableObject {
 		if (pool.Count > 0) {
 			if(!pool.Peek ().Active || pool.Count >= PoolSize) {
 				bullet = pool.Dequeue ();
+				if (!bullet.gameObject.activeInHierarchy) {
+					bullet.gameObject.SetActive (true);
+				}
 			} else {
 				bullet = Instantiate (BulletPrefab);
 			}
