@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4603085710162501880}
   - component: {fileID: 4603085710162501885}
   - component: {fileID: 4603085710162501886}
+  - component: {fileID: 1052022955776475840}
   - component: {fileID: 4603085710162501887}
   m_Layer: 0
   m_Name: Health Pickup
@@ -73,6 +74,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyDamage: -50
+--- !u!114 &1052022955776475840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4603085710162501881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edd262e9c66b25a4db2afe58c3f87d42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4603085710162501887
 MonoBehaviour:
   m_ObjectHideFlags: 0
