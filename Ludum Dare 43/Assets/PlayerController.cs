@@ -106,9 +106,9 @@ public class PlayerController : MonoBehaviour {
 
 	void HandleActions(float timestep) {
 		if (Input.GetMouseButton (0)) {
-			if (Input.GetMouseButtonDown (0)) {
-				TriggerShake ();
-			}
+			//if (Input.GetMouseButtonDown (0)) {
+			//	TriggerShake ();
+			//}
 			sounds.OnShoot ();
 			energy -= timestep;
 
