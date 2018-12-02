@@ -20,6 +20,7 @@ public class Turret : MonoBehaviour {
 	private RaycastHit2D[] hits = new RaycastHit2D[1];
 	private bool firing;
 	private new ExtendedAudioSource audio;
+	private new Material mat;
 	bool dead = false;
 	void Update() {
 		if (dead) { return; }
@@ -50,15 +51,40 @@ public class Turret : MonoBehaviour {
 	}
 
 	IEnumerator Fire(Vector2 origin, Vector2 target) {
+		float colorIntensity = 2.5f, fireDisperse = .3f, fireRecharge = .4f, time = 0f;
 		firing = true;
-		yield return new WaitForSeconds (FireChargeTime);
+		Vector4 color = mat.GetVector ("_EmissionColor");
+		while (time < FireChargeTime) {
+			float val = Ease.Fall.From (1f, colorIntensity, time, FireChargeTime);
+			mat.SetVector ("_EmissionColor", color * val);
+			time += Time.deltaTime;
+			yield return null;
+		}
 		BulletPool.Instance.Next (BulletSpeed, BulletDamage, BulletLifetime, origin, target);
-		yield return new WaitForSeconds (FireRate);
+
+		float adjustedFireRate = FireRate - fireDisperse - fireRecharge;
+		time = 0f;
+		while (time < fireDisperse) {
+			float val = Ease.Linear.From (colorIntensity, .7f, time, fireDisperse);
+			mat.SetVector ("_EmissionColor", color * val);
+			time += Time.deltaTime;
+			yield return null;
+		}
+		time = 0f;
+		while (time < fireRecharge) {
+			float val = Ease.Linear.From (.7f, 1f, time, fireDisperse);
+			mat.SetVector ("_EmissionColor", color * val);
+			time += Time.deltaTime;
+			yield return null;
+		}
+		mat.SetVector ("_EmissionColor", color);
+		yield return new WaitForSeconds (adjustedFireRate);
 		firing = false;
 	}
 
 	private void Awake() {
 		audio = ExtendedAudioSource.Prepare (gameObject);
+		mat = GetComponentInChildren<TurretRenderer> ().GetComponent<MeshRenderer>().material;
 	}
 	private void OnEnable() {
 		firing = false;
