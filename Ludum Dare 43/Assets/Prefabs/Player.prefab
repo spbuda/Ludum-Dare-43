@@ -4962,7 +4962,7 @@ MonoBehaviour:
     loop: 1
   Spawn:
     sounds:
-    - {fileID: 8300000, guid: 5cbdf33de2775774987fac18819f3f9b, type: 3}
+    - {fileID: 8300000, guid: c69706b55e099264cb250b69b1423b3f, type: 3}
     volume: 0.4
     pitchVariance: 0
     loop: 0
