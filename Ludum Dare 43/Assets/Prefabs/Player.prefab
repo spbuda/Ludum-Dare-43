@@ -4935,8 +4935,8 @@ MonoBehaviour:
     loop: 0
   Health:
     sounds:
-    - {fileID: 8300000, guid: 6ad041ff89c1be1479daffeecfd194b6, type: 3}
-    volume: 1
+    - {fileID: 8300000, guid: e8f5c2c20cf08bf428be22688705e2ea, type: 3}
+    volume: 0.5
     pitchVariance: 0.1
     loop: 0
   Warning:
