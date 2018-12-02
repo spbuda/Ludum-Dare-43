@@ -188,8 +188,11 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (!Tools.Calcu.ZeroIsh (force)) {
+			thrusters.ShowThrusters ();
 			thrusters.ThrustAt (force);
 			energy -= Time.fixedDeltaTime;
+		} else {
+			thrusters.HideThrusters ();
 		}
 	}
 
