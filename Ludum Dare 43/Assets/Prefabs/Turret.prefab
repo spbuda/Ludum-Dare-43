@@ -176,12 +176,12 @@ MonoBehaviour:
     pitchVariance: 0.1
     loop: 0
   Energy: 10
-  BulletSpeed: 2.5
+  BulletSpeed: 3
   BulletDamage: 0.1
   BulletLifetime: 8
   FireRange: 20
-  FireChargeTime: 1.5
-  FireRate: 2
+  FireChargeTime: 2
+  FireRate: 1.5
 --- !u!1 &3260682730085198068
 GameObject:
   m_ObjectHideFlags: 0
