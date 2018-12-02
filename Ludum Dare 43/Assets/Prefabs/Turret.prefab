@@ -183,8 +183,8 @@ MonoBehaviour:
     pitchVariance: 0
     loop: 0
   Energy: 10
-  BulletSpeed: 3
-  BulletDamage: 0.1
+  BulletSpeed: 5
+  BulletDamage: 1
   BulletLifetime: 8
   FireRange: 20
   FireChargeTime: 2
