@@ -11,6 +11,7 @@ public class BaseSounds : MonoBehaviour {
 	public SoundEffect Warning;
 	public SoundEffect Death;
 	public SoundEffect Movement;
+	public SoundEffect Spawn;
 
 	private ExtendedAudioSource shoot;
 	private ExtendedAudioSource hit;
@@ -72,6 +73,10 @@ public class BaseSounds : MonoBehaviour {
 
 	public void OnHit() {
 		hit.Play ();
+	}
+
+	public void OnSpawn() {
+		alert.Play (Spawn);
 	}
 
 	public bool isMoving => move.Source.isPlaying;

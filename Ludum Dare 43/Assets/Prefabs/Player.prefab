@@ -4960,6 +4960,12 @@ MonoBehaviour:
     volume: 0.714
     pitchVariance: 0
     loop: 1
+  Spawn:
+    sounds:
+    - {fileID: 8300000, guid: 5cbdf33de2775774987fac18819f3f9b, type: 3}
+    volume: 0.4
+    pitchVariance: 0
+    loop: 0
 --- !u!1 &3016063549220661919
 GameObject:
   m_ObjectHideFlags: 0

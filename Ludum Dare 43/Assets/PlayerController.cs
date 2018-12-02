@@ -44,6 +44,11 @@ public class PlayerController : MonoBehaviour {
 		takeDamageParticles = GetComponentInChildren<TakeDamage> ();
 		MainActions.Instance.Player = this;
 	}
+
+	private void Start() {
+		sounds.OnSpawn ();
+	}
+
 	private void OnDisable() {
 		MainActions.Instance.Player = null;
 	}
