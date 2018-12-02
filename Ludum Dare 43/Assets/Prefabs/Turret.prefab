@@ -176,6 +176,12 @@ MonoBehaviour:
     volume: 1
     pitchVariance: 0.1
     loop: 0
+  ChargeSound:
+    sounds:
+    - {fileID: 8300000, guid: 019ba993239371e4ea7a093f126ad0ab, type: 3}
+    volume: 0.6
+    pitchVariance: 0
+    loop: 0
   Energy: 10
   BulletSpeed: 3
   BulletDamage: 0.1
