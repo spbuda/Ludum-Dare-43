@@ -44,13 +44,13 @@ public class PlayerController : MonoBehaviour {
 
 	void Update() {
 		if (!dead) {
-			HandleCamera ();
-
 			CheckLifeState ();
 
 			healthOrb.Resize (MaxEnergy, energy);
 
 			thrusters.UpdateRotation (Time.deltaTime);
+
+			HandleCamera ();
 		}
 	}
 
@@ -139,8 +139,31 @@ public class PlayerController : MonoBehaviour {
 		return direction * BeamLength;
 	}
 
+	private enum ShakeState { Still, Trigger, Shaking }
+	private ShakeState ScreenShake = ShakeState.Still;
 	void HandleCamera() {
-		Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, -14f);
+		Camera c = Camera.main;
+		transform.position = new Vector3 (transform.position.x, transform.position.y, -14f);
+		if(ScreenShake == ShakeState.Trigger) {
+			ShakeCamera (c, .4f, .1f);
+		}
+	}
+
+	private IEnumerator ShakeCamera(Camera camera, float time, float intensity) {
+		ScreenShake = ShakeState.Shaking;
+		float currentTime = 0f;
+		while (currentTime < time) {
+			Vector3 next = camera.transform.localRotation.eulerAngles;
+			next = new Vector3 (next.x, next.y, next.z + Random.Range (-intensity, intensity));
+			camera.transform.localRotation = Quaternion.RotateTowards (camera.transform.localRotation, Quaternion.Euler(next), 20f * Time.deltaTime);
+			yield return null;
+			currentTime += Time.deltaTime;
+		}
+		bool settled = false;
+		while (!settled) {
+			camera.transform.localRotation = Quaternion.RotateTowards (camera.transform.localRotation, Quaternion.identity, 20f * Time.deltaTime);
+		}
+		ScreenShake = ShakeState.Still;
 	}
 
 	private Vector2 PlayerToMouse() {
