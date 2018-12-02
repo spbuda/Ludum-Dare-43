@@ -8,6 +8,7 @@ public class Turret : MonoBehaviour {
 	public GameObject Main;
 	public GameObject BulletOrigin;
 	public SoundEffect DeathSound;
+	public SoundEffect ChargeSound;
 	public float Energy = 10f;
 
 	public float BulletSpeed = 1f;
@@ -32,6 +33,7 @@ public class Turret : MonoBehaviour {
 			GetComponentsInChildren<Transform> ().Where (t => t.name == "EnemyDeathFX").First ()?
 				.GetComponentsInChildren<ParticleSystem>().ToList().ForEach(p=> p.Play ());
 
+			StopAllCoroutines ();
 			dead = true;
 			return;
 		}
@@ -61,8 +63,8 @@ public class Turret : MonoBehaviour {
 	}
 
 	IEnumerator Fire(Transform origin, Transform target) {
-		float colorIntensity = 5f, fireDisperse = .3f, fireRecharge = .3f, time = 0f, angle;
-		Vector2 dir;
+		audio.Play (ChargeSound);
+		float colorIntensity = 5f, fireDisperse = .3f, fireRecharge = .3f, time = 0f;
 		charging = true;
 		Vector4 color = mat.GetVector ("_EmissionColor");
 		while (time < FireChargeTime) {

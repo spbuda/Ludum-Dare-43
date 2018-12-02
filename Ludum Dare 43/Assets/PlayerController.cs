@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
 	public MoveType MoveType = MoveType.Relative;
 
 	private float energy;
+	public float Energy => energy;
 	private bool dead = false;
 	Rigidbody2D rb;
 	PlayerHealth healthOrb;

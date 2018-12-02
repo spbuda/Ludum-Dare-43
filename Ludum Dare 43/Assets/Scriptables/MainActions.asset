@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a2be7cc549a32a47950db370ddc0855, type: 3}
   m_Name: MainActions
   m_EditorClassIdentifier: 
-  LosePopup: {fileID: 3899478028604902427, guid: 9077f29601e299c4b9353bf1266320aa,
-    type: 3}
+  LosePopup: {fileID: 65044163, guid: 9077f29601e299c4b9353bf1266320aa, type: 3}
+  TotalScore: 0
