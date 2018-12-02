@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SpikeAndDotPadIntro.unity
     guid: 5d0d4a53620c8f14e930bb2838442165
+  - enabled: 0
+    path: Assets/Scenes/JamesScene.unity
+    guid: 4dda0d278aea82144b5c3f2c477a3ffd
+  - enabled: 1
+    path: Assets/Scenes/TheHorseShoe.unity
+    guid: 6675af28eea5bb044ab6df3d74b7de9e
   m_configObjects: {}
