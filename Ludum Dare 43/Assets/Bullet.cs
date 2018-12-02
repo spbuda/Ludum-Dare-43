@@ -8,15 +8,13 @@ public class Bullet : MonoBehaviour {
 	float lifetime = 10f;
 	Rigidbody2D rb;
 	public bool Active { get; private set; }
-	private void OnEnable() {
-		rb = GetComponent<Rigidbody2D> ();
-	}
 	private void OnDisable() {
 		Active = false;
 		rb = null;
 	}
 
 	public void Init(float speed, float damage, float lifetime, Vector2 position, Vector2 target) {
+		rb = GetComponent<Rigidbody2D> ();
 		Active = true;
 		transform.position = position;
 		transform.LookAt (target);
@@ -24,7 +22,8 @@ public class Bullet : MonoBehaviour {
 		this.damage = damage;
 		this.lifetime = lifetime;
 		rb.drag = 0f;
-		rb.AddForce ((target - position).normalized * speed);
+		rb.velocity = (target - position).normalized * speed;
+		//rb.AddForce ();
 	}
 
 	private void Update() {

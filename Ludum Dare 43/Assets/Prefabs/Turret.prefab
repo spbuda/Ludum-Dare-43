@@ -157,11 +157,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Main: {fileID: 3260682730085198068}
   BulletOrigin: {fileID: 6613645590699817355}
-  BulletSpeed: 1
-  BulletDamage: 1
+  BulletSpeed: 2
+  BulletDamage: 0.5
   BulletLifetime: 10
   FireRange: 20
-  FireChargeTime: 1
+  FireChargeTime: 0.4
   FireRate: 2
 --- !u!1 &3260682730085198068
 GameObject:
