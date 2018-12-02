@@ -5,6 +5,7 @@ using UnityEngine;
 public class Turret : MonoBehaviour {
 	public GameObject Main;
 	public GameObject BulletOrigin;
+	public float Energy = 10f;
 
 	public float BulletSpeed = 1f;
 	public float BulletDamage = 1f;
@@ -18,6 +19,12 @@ public class Turret : MonoBehaviour {
 	private bool firing;
 
 	void Update() {
+		if(Energy <= 0f) {
+			//TODO: explode thing.
+			Destroy (this.gameObject);
+			return;
+		}
+
 		if (MainActions.Instance.Player) {
 			Vector3 target = MainActions.Instance.Player.transform.position;
 			Vector3 dir = target - transform.position;
@@ -47,5 +54,13 @@ public class Turret : MonoBehaviour {
 
 	private void OnEnable() {
 		firing = false;
+	}
+
+	void OnCollisionEnter2D(Collision2D collisionD) {
+		Energy -= collisionD.gameObject.GetComponent<CollisionDamage> ().energyDamage;
+	}
+
+	public void LoseEnergy(float amount) {
+		Energy -= amount;
 	}
 }
