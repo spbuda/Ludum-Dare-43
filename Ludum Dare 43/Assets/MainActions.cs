@@ -102,6 +102,17 @@ public class MainActions : ScriptableObject {
 		return name.ToString ();
 	}
 
+	public string CurrentSceneName() {
+		string name = SceneManager.GetActiveScene ().name;
+		foreach (SceneName scene in System.Enum.GetValues (typeof (SceneName))) {
+			if(name == scene.ToString ()) {
+				return ReadableSceneName (scene);
+			}
+		}
+		//No scene found by that name? Make something up!
+		return "Ascendence";
+	}
+
 	public enum SceneName {
 		TheHorseShoe, Liftoff, InfiltrationI, InfiltrationII, TheSnoon, TheGlove, Strafing, Helix, Edgy, Snek, Walls, ReachForTheSkies, SolarSystem, WeLiveInASociety, LevelFinal
 	};
