@@ -52,7 +52,7 @@ namespace Tools {
 					_inst = ScriptableObject.CreateInstance<T> ();
 					Debug.Assert (_inst != null, "No asset of type '" + typeof (T) + "' could be created.");
 				}
-				_inst.hideFlags = HideFlags.HideAndDontSave;
+				//_inst.hideFlags = HideFlags.HideAndDontSave;
 			}
 			return _inst;
 		}
