@@ -53,4 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Walls.unity
     guid: 08b4096014d14e842baf1038c467d76a
+  - enabled: 1
+    path: Assets/Scenes/ReachForTheSkies.unity
+    guid: c5fabacb72983364eb8c7cb5cb4adb18
   m_configObjects: {}

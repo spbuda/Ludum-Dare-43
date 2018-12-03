@@ -17,11 +17,11 @@ public class MainActions : ScriptableObject {
 
 	[SerializeField]
 	private LosePopup LosePopup;
-	
+
 	public float TotalScore = 0f;
 
 	public bool PauseBehaviors = false;
-	
+
 	public void StartGame() {
 		TotalScore = 0f;
 		SceneManager.LoadScene(SceneFromEnum (SceneName.TheHorseShoe), LoadSceneMode.Single);
@@ -87,7 +87,7 @@ public class MainActions : ScriptableObject {
 	}
 
 	public enum SceneName {
-		TheHorseShoe, SpeedPadIntro, ButtonTurretIntro, HealthIntro, SpikeAndDotPadIntro, TheGlove, Strafing, Helix, Edgy, Snek, Walls, LevelFinal
+		TheHorseShoe, SpeedPadIntro, ButtonTurretIntro, HealthIntro, SpikeAndDotPadIntro, TheGlove, Strafing, Helix, Edgy, Snek, Walls, ReachForTheSkies, LevelFinal
 	};
 
 	public PlayerController Player { get; set; } = null;
