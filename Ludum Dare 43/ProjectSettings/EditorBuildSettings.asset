@@ -8,12 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuScene.unity
     guid: 2baaa385a447d9446ba2c023694ec57f
-  - enabled: 0
-    path: Assets/Scenes/GameScene.unity
-    guid: b2aea1df86687b645bdc06272080255e
-  - enabled: 0
-    path: Assets/Scenes/SpencerScene.unity
-    guid: 1b61bd86dd3d3a44e860f5bc9ceb9b56
   - enabled: 1
     path: Assets/Scenes/SpeedPadIntro.unity
     guid: c7739bceb394fe7419396d9dc04dce43
@@ -29,9 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SpikeAndDotPadIntro.unity
     guid: 5d0d4a53620c8f14e930bb2838442165
-  - enabled: 0
-    path: Assets/Scenes/JamesScene.unity
-    guid: 4dda0d278aea82144b5c3f2c477a3ffd
   - enabled: 1
     path: Assets/Scenes/TheHorseShoe.unity
     guid: 6675af28eea5bb044ab6df3d74b7de9e

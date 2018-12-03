@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEditor;
 
 namespace Tools {
 	public static class Tags {
@@ -47,7 +46,7 @@ namespace Tools {
 			T _inst = Resources.FindObjectsOfTypeAll<T> ().FirstOrDefault ();
 			if (!_inst || forceGetByName) {
 				if (name != null || forceGetByName) {
-					_inst = AssetDatabase.LoadAssetAtPath<T> (name);
+					_inst = Resources.Load<T> (name);
 					Debug.Assert (_inst != null, "No asset found at path '" + name + "'. Make sure name is correct.");
 				} else {
 					_inst = ScriptableObject.CreateInstance<T> ();
@@ -55,14 +54,6 @@ namespace Tools {
 				}
 				_inst.hideFlags = HideFlags.HideAndDontSave;
 			}
-			return _inst;
-		}
-
-		public static T GetEvent<T>(string name) where T : ScriptableObject {
-			T _inst = null;
-			_inst = AssetDatabase.LoadAssetAtPath<T> ("Assets/Events/" + name + ".asset");
-			Debug.Assert (_inst != null, "No asset found at path '" + name + "'. Make sure name is correct.");
-			_inst.hideFlags = HideFlags.HideAndDontSave;
 			return _inst;
 		}
 

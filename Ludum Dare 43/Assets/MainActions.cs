@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 [CreateAssetMenu (menuName = "Scriptables/Main Actions")]
 public class MainActions : ScriptableObject {
-	private static readonly string ASSETPATH = "Assets/Scriptables/MainActions.asset";
+	private static readonly string ASSETPATH = "Assets/Resources/MainActions";
 	private static MainActions _inst;
 	public static MainActions Instance {
 		get {

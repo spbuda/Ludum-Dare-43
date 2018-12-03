@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour {
 	public SoundEffect LaunchSound;
 
 	Rigidbody2D rb;
-	private new ExtendedAudioSource audio = null;
+	private ExtendedAudioSource audio = null;
 	public bool Active { get; private set; }
 
 	private void OnDisable() {
