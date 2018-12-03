@@ -45,9 +45,10 @@ public class Bullet : MonoBehaviour {
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision) {
-		if(collision.gameObject.tag == "Hittable") {
-			collision.gameObject.GetComponent<OnHit> ().onHitScript.Invoke ();
-		}else if(collision.gameObject.tag != "Shootover") {
+		if(collision.gameObject.tag != "Shootover") {
+			if (collision.gameObject.tag == "Hittable") {
+				collision.gameObject.GetComponent<OnHit> ().onHitScript.Invoke ();
+			}
 			Detonate ();
 		}
 	}

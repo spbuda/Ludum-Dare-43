@@ -53,17 +53,16 @@ public class Turret : MonoBehaviour {
 					Debug.DrawRay (origin.position, dir * FireRange, Color.red);
 					int hit = Physics2D.RaycastNonAlloc (origin.position, dir, hits, FireRange);
 					//Can we see the player
-					if (hit > 0 && hits[0].collider != null && hits[0].collider.gameObject == MainActions.Instance.Player.gameObject) {
-						StartCoroutine (Fire (origin, target));
-					}if(hit > 1 && hits[0].collider != null) {
-						for(int i = 0; i < hit; i++) {
-							if(hits[i].collider.gameObject.tag == "Shootover") {
-
-							}else if (hits[i].collider.gameObject == MainActions.Instance.Player.gameObject) {
+					GameObject go;
+					for (int i = 0; i < hit; i++) {
+						go = hits[i].collider.gameObject;
+						if(go.tag == "Shootover") {
+							continue;
+						} else {
+							if (go == MainActions.Instance.Player.gameObject) {
 								StartCoroutine (Fire (origin, target));
-							} else {
-								break;
 							}
+							break;
 						}
 					}
 				}
