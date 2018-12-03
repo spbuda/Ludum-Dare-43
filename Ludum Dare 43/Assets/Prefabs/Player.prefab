@@ -4924,7 +4924,7 @@ MonoBehaviour:
   Shoot:
     sounds:
     - {fileID: 8300000, guid: 0027e976f5cb3e24fbfb95f1c86816f6, type: 3}
-    volume: 0.5
+    volume: 0.75
     pitchVariance: 0.1
     loop: 1
   Bump:
@@ -4960,7 +4960,7 @@ MonoBehaviour:
   Movement:
     sounds:
     - {fileID: 8300000, guid: a66cb672a81b51d4d82314668e37ce92, type: 3}
-    volume: 0.714
+    volume: 1
     pitchVariance: 0
     loop: 1
   Spawn:
