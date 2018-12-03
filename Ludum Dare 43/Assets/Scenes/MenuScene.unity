@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -294,12 +294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da41ef789d73aae46808077b72d39f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Music:
-    sounds:
-    - {fileID: 8300000, guid: e66c703b5e2ecef41994aaa9cb653618, type: 3}
-    volume: 0.2
-    pitchVariance: 0
-    loop: 1
+  Music: {fileID: 8300000, guid: e66c703b5e2ecef41994aaa9cb653618, type: 3}
+  volume: 0.2
 --- !u!4 &88063587
 Transform:
   m_ObjectHideFlags: 0
