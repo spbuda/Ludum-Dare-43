@@ -22114,6 +22114,21 @@ PrefabInstance:
       propertyPath: energyDamage
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3311643186446933491, guid: 7c4007ad62f0c7044a241be01a2d0c0b,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311643186446933491, guid: 7c4007ad62f0c7044a241be01a2d0c0b,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311643186446933491, guid: 7c4007ad62f0c7044a241be01a2d0c0b,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5145662724265033464, guid: 7c4007ad62f0c7044a241be01a2d0c0b,
         type: 3}
       propertyPath: m_Tiles.Array.size
