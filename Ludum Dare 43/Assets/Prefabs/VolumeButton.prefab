@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5337513514538373021
 RectTransform:
   m_ObjectHideFlags: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!1 &5337513514697505760
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baaf16bd755135645b2c0c7f689bbd7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mute: {fileID: 21300000, guid: 02103234ad9a16f4083220543ad905a0, type: 3}
-  Low: {fileID: 21300000, guid: 68b87678a2e9d954c97831088fe03da4, type: 3}
-  Mid: {fileID: 21300000, guid: c179f384129249249953c2cdf44a56ba, type: 3}
-  Full: {fileID: 21300000, guid: 29acac224a299b44dbef21c0af5ca716, type: 3}
+  Mute: {fileID: 21300000, guid: daf6c4d88e3209f4899e4a8aa644b860, type: 3}
+  Low: {fileID: 21300000, guid: b55b1c195c73664498ec0059b1db36ef, type: 3}
+  Mid: {fileID: 21300000, guid: 4578030f17f59a046a24b4b12f08d9f9, type: 3}
+  Full: {fileID: 21300000, guid: ccb4c2afbeb4dcb45ac3061ce36c14a5, type: 3}
