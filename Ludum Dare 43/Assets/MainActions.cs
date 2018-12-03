@@ -114,7 +114,7 @@ public class MainActions : ScriptableObject {
 	}
 
 	public enum SceneName {
-		TheHorseShoe, Liftoff, InfiltrationI, InfiltrationII, TheSnoon, TheGlove, Strafing, Helix, Edgy, Snek, Walls, ReachForTheSkies, SolarSystem, WeLiveInASociety, LevelFinal
+		TheHorseShoe, Liftoff, InfiltrationI, InfiltrationII, TheSnoon, TheGlove, Strafing, Helix, Edgy, Snek, Walls, ReachForTheSkies, SolarSystem, WeLiveInASociety, Vulrox
 	};
 
 	public string ReadableSceneName (SceneName scene) {
@@ -145,6 +145,8 @@ public class MainActions : ScriptableObject {
 			return "Reach For The Skies";
 		case SceneName.SolarSystem:
 			return "Solar System";
+		case SceneName.Vulrox:
+			return "Vulrox";
 		case SceneName.WeLiveInASociety:
 			return "We Live In A Society";
 		default:
