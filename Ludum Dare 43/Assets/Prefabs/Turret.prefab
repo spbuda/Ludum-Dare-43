@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 3260682730085198069}
   - component: {fileID: 2825859003414828314}
   - component: {fileID: 5037324712932879014}
+  - component: {fileID: 7449534496846345918}
   m_Layer: 0
   m_Name: TurretMain
   m_TagString: Hittable
@@ -267,6 +268,20 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &7449534496846345918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3260682730085198068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d249559b310f24890a1aaf982f1256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: 2
+  energyDamage: 1
 --- !u!1 &6613645590699817355
 GameObject:
   m_ObjectHideFlags: 0
