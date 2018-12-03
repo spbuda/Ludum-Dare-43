@@ -39,6 +39,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Strafing.unity
     guid: 4ce3344cb4dacad4b86799e738a293fc
   - enabled: 1
-    path: Assets/Scenes/NewLevel.unity
+    path: Assets/Scenes/Edgy.unity
     guid: c82a60ab74f376d44855bcf47f29f867
+  - enabled: 1
+    path: Assets/Scenes/Helix.unity
+    guid: af22615a7b12af6459c15893489cc0e0
+  - enabled: 1
+    path: Assets/Scenes/TheGlove.unity
+    guid: e236d1ca5b2081443afd7a38ea1e983e
   m_configObjects: {}
