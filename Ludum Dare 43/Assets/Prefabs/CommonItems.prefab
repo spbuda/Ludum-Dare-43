@@ -50,7 +50,7 @@ MonoBehaviour:
   Music:
     sounds:
     - {fileID: 8300000, guid: 13d3cde83dea32447a77811e44ab81b5, type: 3}
-    volume: 0.1
+    volume: 0.3
     pitchVariance: 0
     loop: 1
 --- !u!1001 &7183110135212515714
