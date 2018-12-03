@@ -17,11 +17,11 @@ public class MainActions : ScriptableObject {
 
 	[SerializeField]
 	private LosePopup LosePopup;
-
+	
 	public float TotalScore = 0f;
 
 	public bool PauseBehaviors = false;
-
+	
 	public void StartGame() {
 		TotalScore = 0f;
 		SceneManager.LoadScene(SceneFromEnum (SceneName.TheHorseShoe), LoadSceneMode.Single);
@@ -47,7 +47,7 @@ public class MainActions : ScriptableObject {
 		LosePopup pop = Instantiate (LosePopup, Vector3.zero, Quaternion.identity);
 		BulletPool.Instance.ResetAll ();
 		//TotalScore += score * multiplier;
-		pop.ChangeScore (score, TotalScore, multiplier);
+		pop.ChangeScore (score, TotalScore + (score * multiplier), multiplier);
 
 		pop.GetComponentInChildren<RetryButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
 		LosePopup.NextLevel callback = delegate () {
@@ -74,7 +74,7 @@ public class MainActions : ScriptableObject {
 		BulletPool.Instance.ResetAll ();
 		pop.GetComponentInChildren<RetryButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
 		pop.GetComponentInChildren<NextButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = false;
-		pop.ChangeScore (0f, TotalScore + (score * multiplier), 0f);
+		pop.ChangeScore (0f, TotalScore, 0f);
 		PauseBehaviors = true;
 	}
 
@@ -87,7 +87,7 @@ public class MainActions : ScriptableObject {
 	}
 
 	public enum SceneName {
-		TheHorseShoe, SpeedPadIntro, ButtonTurretIntro, HealthIntro, SpikeAndDotPadIntro, TheGlove, Strafing, Helix, Edgy, Snek, Walls, ReachForTheSkies, LevelFinal
+		TheHorseShoe, SpeedPadIntro, ButtonTurretIntro, HealthIntro, SpikeAndDotPadIntro, TheGlove, Strafing, Helix, Edgy, Snek, Walls, LevelFinal
 	};
 
 	public PlayerController Player { get; set; } = null;
