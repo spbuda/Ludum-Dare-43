@@ -66,7 +66,7 @@ public class MainActions : ScriptableObject {
 		pop.ChangeScore (score, TotalScore + (score * multiplier), multiplier);
 
 		pop.GetComponentInChildren<RetryButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
-		pop.GetComponentInChildren<NextButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
+		pop.GetComponentInChildren<NextButton> ().GetComponent<UnityEngine.UI.Button> ().gameObject.SetActive(false);
 	}
 
 	public void LoseGame() {
