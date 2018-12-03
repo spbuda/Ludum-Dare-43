@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D staticEffect) {
 		if (staticEffect.gameObject.GetComponent<DamageOT> () != null && !MainActions.Instance.PauseBehaviors) {
 			energy -= staticEffect.gameObject.GetComponent<DamageOT> ().dOT;
+			sounds.DOTPad ();
 		}
 	}
 
