@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collisionD) {
 		CollisionDamage dmg = collisionD.gameObject.GetComponent<CollisionDamage> ();
-		if(dmg != null) {
+		if(dmg != null && !MainActions.Instance.PauseBehaviors) {
 			energy -= dmg.energyDamage;
 			sounds.OnSoundType (dmg.sound);
 			TriggerShake ();
@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D(Collider2D staticEffect) {
-		if (staticEffect.gameObject.GetComponent<DamageOT> () != null) {
+		if (staticEffect.gameObject.GetComponent<DamageOT> () != null && !MainActions.Instance.PauseBehaviors) {
 			energy -= staticEffect.gameObject.GetComponent<DamageOT> ().dOT;
 		}
 	}
@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour {
 			speedModifier = staticEffect.gameObject.GetComponent<SpeedPad> ().speedMod;
 		}
 		CollisionDamage dmg = staticEffect.gameObject.GetComponent<CollisionDamage> ();
-		if (dmg != null) {
+		if (dmg != null && !MainActions.Instance.PauseBehaviors) {
 			energy -= dmg.energyDamage;
 			sounds.OnSoundType (dmg.sound);
 			if (energy > MaxEnergy) {
