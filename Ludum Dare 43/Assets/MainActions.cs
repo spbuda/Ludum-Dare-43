@@ -21,7 +21,8 @@ public class MainActions : ScriptableObject {
 	public float TotalScore = 0f;
 
 	public bool PauseBehaviors = false;
-	public float Volume = 1f;
+
+	public float Volume { get; private set; } = .6f;
 	
 	public void StartGame() {
 		PauseBehaviors = false;
@@ -29,6 +30,18 @@ public class MainActions : ScriptableObject {
 		SceneManager.LoadScene(SceneFromEnum (SceneName.TheHorseShoe), LoadSceneMode.Single);
 	}
 
+	public void StepVolume() {
+		if(Volume < .1f) {
+			Volume = .3f;
+		}else if(Volume < .5f) {
+			Volume = .6f;
+		} else if (Volume < .9f) {
+			Volume = 1f;
+		} else {
+			Volume = 0f;
+		}
+		AudioListener.volume = Volume;
+	}
 
 	public void NextScene(float score, float multiplier, SceneName scene) {
 		PauseBehaviors = false;

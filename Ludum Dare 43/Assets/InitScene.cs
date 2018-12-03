@@ -9,7 +9,7 @@ public class InitScene : MonoBehaviour {
 	void Start() {
 		MainActions.Instance.PauseBehaviors = false;
 		audio = Tools.ExtendedAudioSource.Prepare (this.gameObject, Music);
-		audio.Play (volume: MainActions.Instance.Volume * Music.volume);
+		audio.Play (volume: Music.volume);
 	}
 
 	private void OnDisable() {
