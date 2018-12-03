@@ -47,7 +47,7 @@ public class MainActions : ScriptableObject {
 		LosePopup pop = Instantiate (LosePopup, Vector3.zero, Quaternion.identity);
 		BulletPool.Instance.ResetAll ();
 		//TotalScore += score * multiplier;
-		pop.ChangeScore (TotalScore, multiplier);
+		pop.ChangeScore (score, TotalScore, multiplier);
 
 		pop.GetComponentInChildren<RetryButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
 		LosePopup.NextLevel callback = delegate () {
@@ -62,7 +62,7 @@ public class MainActions : ScriptableObject {
 	public void WinGame(float score, float multiplier) {
 		LosePopup pop = Instantiate (LosePopup, Vector3.zero, Quaternion.identity);
 		BulletPool.Instance.ResetAll ();
-		pop.ChangeScore (TotalScore + (score * multiplier), multiplier);
+		pop.ChangeScore (score, TotalScore + (score * multiplier), multiplier);
 
 		pop.GetComponentInChildren<RetryButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
 		pop.GetComponentInChildren<NextButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
@@ -74,7 +74,7 @@ public class MainActions : ScriptableObject {
 		BulletPool.Instance.ResetAll ();
 		pop.GetComponentInChildren<RetryButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
 		pop.GetComponentInChildren<NextButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = false;
-		pop.ChangeScore (TotalScore, 0f);
+		pop.ChangeScore (0f, TotalScore + (score * multiplier), 0f);
 		PauseBehaviors = true;
 	}
 
@@ -87,7 +87,7 @@ public class MainActions : ScriptableObject {
 	}
 
 	public enum SceneName {
-		TheHorseShoe, SpeedPadIntro, ButtonTurretIntro, HealthIntro, SpikeAndDotPadIntro, TheGlove, Strafing, Helix, Edgy, Snek, LevelFinal
+		TheHorseShoe, SpeedPadIntro, ButtonTurretIntro, HealthIntro, SpikeAndDotPadIntro, TheGlove, Strafing, Helix, Edgy, Snek, Walls, LevelFinal
 	};
 
 	public PlayerController Player { get; set; } = null;

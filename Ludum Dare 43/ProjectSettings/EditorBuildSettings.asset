@@ -47,4 +47,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TheGlove.unity
     guid: e236d1ca5b2081443afd7a38ea1e983e
+  - enabled: 1
+    path: Assets/Scenes/Snek.unity
+    guid: b4dc99590c36e924cb19ffbddf9597c0
+  - enabled: 1
+    path: Assets/Scenes/Walls.unity
+    guid: 08b4096014d14e842baf1038c467d76a
   m_configObjects: {}
