@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FinalPortal : MonoBehaviour {
+	public float ScoreMultiplier = 1f;
 	private void OnTriggerEnter2D(Collider2D collision) {
 		PlayerController player = collision.GetComponent<PlayerController> ();
 		if (player != null && !player.Dead) {
-			MainActions.Instance.WinGame (player.MaxEnergy - player.Energy);
+			MainActions.Instance.WinGame (player.MaxEnergy - player.Energy, ScoreMultiplier);
 			Destroy (player.gameObject);
 		}
 	}

@@ -43,10 +43,10 @@ public class MainActions : ScriptableObject {
 		PauseBehaviors = false;
 	}
 
-	public void WinGame(float score) {
+	public void WinGame(float score, float multiplier) {
 		LosePopup pop = Instantiate (LosePopup, Vector3.zero, Quaternion.identity);
 		BulletPool.Instance.ResetAll ();
-
+		TotalScore += score * multiplier;
 		pop.ChangeScore (TotalScore);
 		pop.GetComponentInChildren<RetryButton> ().gameObject.SetActive (false);
 		PauseBehaviors = true;
