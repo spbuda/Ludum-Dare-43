@@ -31,14 +31,14 @@ public class MainActions : ScriptableObject {
 	}
 
 	public void StepVolume() {
-		if(Volume < .1f) {
-			Volume = .3f;
-		}else if(Volume < .5f) {
+		if(Volume > .9f) {
 			Volume = .6f;
-		} else if (Volume < .9f) {
-			Volume = 1f;
-		} else {
+		}else if(Volume > .5f) {
+			Volume = .3f;
+		} else if (Volume > .1f) {
 			Volume = 0f;
+		} else {
+			Volume = 1f;
 		}
 		AudioListener.volume = Volume;
 	}
