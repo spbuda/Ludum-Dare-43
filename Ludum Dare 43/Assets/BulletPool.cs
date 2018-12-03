@@ -49,8 +49,10 @@ public class BulletPool : ScriptableObject {
 	}
 
 	public void ResetAll() {
-		foreach(Bullet bullet in pool) {
-			bullet.Detonate ();
+		if(pool != null) {
+			foreach(Bullet bullet in pool) {
+				bullet.Detonate ();
+			}
 		}
 	}
 }
