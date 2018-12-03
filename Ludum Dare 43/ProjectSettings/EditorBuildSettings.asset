@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/InfiltrationI.unity
     guid: 77c320c3025e71245be199f06cacac85
   - enabled: 1
-    path: Assets/Scenes/HealthIntro.unity
-    guid: 2d98fe6f6df334c40a2c34001c07a974
-  - enabled: 1
     path: Assets/Scenes/LevelFinal.unity
     guid: 991a691abdd18d840b40d5df0d43eaa8
   - enabled: 1
@@ -53,4 +50,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WeLiveInASociety.unity
     guid: 298563e65aec1154f984afc5c4909d24
+  - enabled: 1
+    path: Assets/Scenes/InfiltrationII.unity
+    guid: 2d98fe6f6df334c40a2c34001c07a974
   m_configObjects: {}
