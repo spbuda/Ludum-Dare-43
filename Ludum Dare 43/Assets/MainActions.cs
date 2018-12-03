@@ -29,9 +29,9 @@ public class MainActions : ScriptableObject {
 	}
 
 
-	public void NextScene(float score, SceneName scene) {
+	public void NextScene(float score, float multiplier, SceneName scene) {
 		BulletPool.Instance.ResetAll ();
-		TotalScore += score;
+		TotalScore += score * multiplier;
 		SceneManager.LoadScene (SceneFromEnum(scene), LoadSceneMode.Single);
 		BulletPool.Instance.ResetAll ();
 		PauseBehaviors = false;

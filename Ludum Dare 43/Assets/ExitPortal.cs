@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ExitPortal : MonoBehaviour {
 	public MainActions.SceneName Destination;
+	public float ScoreMultiplier = 1f;
 
 	private void OnTriggerEnter2D(Collider2D collision) {
 		PlayerController player = collision.GetComponent<PlayerController> ();
