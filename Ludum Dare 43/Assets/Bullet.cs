@@ -47,11 +47,12 @@ public class Bullet : MonoBehaviour {
 	private void OnCollisionEnter2D(Collision2D collision) {
 		if(collision.gameObject.tag == "Hittable") {
 			collision.gameObject.GetComponent<OnHit> ().onHitScript.Invoke ();
+		}else if(collision.gameObject.tag != "Shootover") {
+			Detonate ();
 		}
-		Detonate ();
 	}
 
-	private void Detonate() {
+	public void Detonate() {
 		Active = false;
 		this.gameObject.SetActive (false);
 	}
