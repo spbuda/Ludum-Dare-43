@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
 
 	public bool FireForce = false;
 	public MoveType MoveType = MoveType.Relative;
+	public float maxVelocity = 10; //speedmod change
 
 	private float energy;
 	public float Energy => energy;
@@ -89,11 +90,20 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	private float speedModifier = 1;
-
+	private float speedModifier = 1f;
+	public float instantSlow = .5f;
+	public float instantSpeed = 2f;
 	void OnTriggerEnter2D(Collider2D staticEffect) {
 		if (staticEffect.gameObject.GetComponent<SpeedPad> () != null) {
 			speedModifier = staticEffect.gameObject.GetComponent<SpeedPad> ().speedMod;
+			
+			if (speedModifier < 1f) {
+				sounds.SlowDown ();
+				rb.velocity = rb.velocity * instantSlow; //speedmod change
+			} else {
+				sounds.SpeedUp ();
+				rb.velocity = rb.velocity * instantSpeed; //speedmod change
+			}
 		}
 		CollisionDamage dmg = staticEffect.gameObject.GetComponent<CollisionDamage> ();
 		if (dmg != null && !MainActions.Instance.PauseBehaviors) {
@@ -227,6 +237,8 @@ public class PlayerController : MonoBehaviour {
 			HandleRotation ();
 
 			HandleActions (Time.fixedDeltaTime);
+
+			rb.velocity = Vector2.ClampMagnitude (rb.velocity, maxVelocity); //speedmod change
 		}
 	}
 
