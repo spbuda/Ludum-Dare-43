@@ -4869,6 +4869,9 @@ MonoBehaviour:
     type: 3}
   FireForce: 0
   MoveType: 2
+  maxVelocity: 50
+  instantSlow: 0.5
+  instantSpeed: 1.25
 --- !u!50 &3016063548764109828
 Rigidbody2D:
   serializedVersion: 4
@@ -4964,6 +4967,18 @@ MonoBehaviour:
     sounds:
     - {fileID: 8300000, guid: c69706b55e099264cb250b69b1423b3f, type: 3}
     volume: 0.4
+    pitchVariance: 0
+    loop: 0
+  Speed:
+    sounds:
+    - {fileID: 8300000, guid: 433c009525ac3fc4eaf4e6d8549ca696, type: 3}
+    volume: 0.5
+    pitchVariance: 0
+    loop: 0
+  Slow:
+    sounds:
+    - {fileID: 8300000, guid: 3371ac35ceffdd4428b8885c09f26c35, type: 3}
+    volume: 0.5
     pitchVariance: 0
     loop: 0
 --- !u!1 &3016063549220661919

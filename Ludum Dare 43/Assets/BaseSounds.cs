@@ -12,17 +12,23 @@ public class BaseSounds : MonoBehaviour {
 	public SoundEffect Death;
 	public SoundEffect Movement;
 	public SoundEffect Spawn;
+	public SoundEffect Speed;
+	public SoundEffect Slow;
 
 	private ExtendedAudioSource shoot;
 	private ExtendedAudioSource hit;
 	private ExtendedAudioSource alert;
 	private ExtendedAudioSource move;
+	private ExtendedAudioSource speedPad;
+	private ExtendedAudioSource slowPad;
 
 	void Start() {
 		shoot = ExtendedAudioSource.Prepare (this.gameObject, Shoot);
 		hit = ExtendedAudioSource.Prepare (this.gameObject, Hit);
 		alert = ExtendedAudioSource.Prepare (this.gameObject);
 		move = ExtendedAudioSource.Prepare (this.gameObject, Movement);
+		speedPad = ExtendedAudioSource.Prepare (this.gameObject, Speed);
+		slowPad = ExtendedAudioSource.Prepare (this.gameObject, Slow);
 	}
 
 	public bool Shooting => shoot.Source.isPlaying;
@@ -88,6 +94,20 @@ public class BaseSounds : MonoBehaviour {
 	public void StopMoving() {
 		if (isMoving) {
 			move.Source.Stop ();
+		}
+	}
+
+	public bool speeding => speedPad.Source.isPlaying;
+	public void SpeedUp() {
+		if (!speeding) {
+			speedPad.Play ();
+		}
+	}
+
+	public bool slowing => slowPad.Source.isPlaying;
+	public void SlowDown() {
+		if (!slowing) {
+			slowPad.Play ();
 		}
 	}
 }
