@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update() {
-		if (!Dead) {
+		if (!Dead && !MainActions.Instance.PauseBehaviors) {
 			CheckLifeState ();
 
 			healthOrb.Resize (MaxEnergy, energy);
@@ -221,7 +221,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void FixedUpdate() {
-		if (!Dead) {
+		if (!Dead && !MainActions.Instance.PauseBehaviors) {
 			HandleControls (Time.fixedDeltaTime);
 
 			HandleRotation ();

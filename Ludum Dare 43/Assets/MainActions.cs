@@ -43,19 +43,38 @@ public class MainActions : ScriptableObject {
 		PauseBehaviors = false;
 	}
 
+	public void WinLevel(float score, float multiplier, SceneName scene) {
+		LosePopup pop = Instantiate (LosePopup, Vector3.zero, Quaternion.identity);
+		BulletPool.Instance.ResetAll ();
+		//TotalScore += score * multiplier;
+		pop.ChangeScore (TotalScore, multiplier);
+
+		pop.GetComponentInChildren<RetryButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
+		LosePopup.NextLevel callback = delegate () {
+			NextScene (score, multiplier, scene);
+		};
+
+		pop.GetComponentInChildren<NextButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
+		pop.NextLevelCallback += callback;
+		PauseBehaviors = true;
+	}
+
 	public void WinGame(float score, float multiplier) {
 		LosePopup pop = Instantiate (LosePopup, Vector3.zero, Quaternion.identity);
 		BulletPool.Instance.ResetAll ();
-		TotalScore += score * multiplier;
-		pop.ChangeScore (TotalScore);
-		pop.GetComponentInChildren<RetryButton> ().gameObject.SetActive (false);
+		pop.ChangeScore (TotalScore + (score * multiplier), multiplier);
+
+		pop.GetComponentInChildren<RetryButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
+		pop.GetComponentInChildren<NextButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
 		PauseBehaviors = true;
 	}
 
 	public void LoseGame() {
 		LosePopup pop = Instantiate (LosePopup, Vector3.zero, Quaternion.identity);
 		BulletPool.Instance.ResetAll ();
-		pop.ChangeScore (TotalScore);
+		pop.GetComponentInChildren<RetryButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
+		pop.GetComponentInChildren<NextButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = false;
+		pop.ChangeScore (TotalScore, 0f);
 		PauseBehaviors = true;
 	}
 

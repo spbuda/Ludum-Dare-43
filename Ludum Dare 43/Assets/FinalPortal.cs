@@ -7,7 +7,7 @@ public class FinalPortal : MonoBehaviour {
 	private void OnTriggerEnter2D(Collider2D collision) {
 		PlayerController player = collision.GetComponent<PlayerController> ();
 		if (player != null && !player.Dead) {
-			MainActions.Instance.WinGame (player.MaxEnergy - player.Energy, ScoreMultiplier);
+			MainActions.Instance.WinGame (player.Energy, ScoreMultiplier);
 			Destroy (player.gameObject);
 		}
 	}

@@ -9,7 +9,7 @@ public class ExitPortal : MonoBehaviour {
 	private void OnTriggerEnter2D(Collider2D collision) {
 		PlayerController player = collision.GetComponent<PlayerController> ();
 		if(player != null && !player.Dead) {
-			MainActions.Instance.NextScene (player.MaxEnergy - player.Energy, ScoreMultiplier, Destination);
+			MainActions.Instance.WinLevel (player.Energy, ScoreMultiplier, Destination);
 		}
 	}
 
