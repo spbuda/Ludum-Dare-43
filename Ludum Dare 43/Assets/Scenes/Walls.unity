@@ -5301,11 +5301,6 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[169].second.m_ColliderType
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5365121195231702818, guid: 7c4007ad62f0c7044a241be01a2d0c0b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2785899357889597104, guid: 7c4007ad62f0c7044a241be01a2d0c0b,
         type: 3}
       propertyPath: m_Tiles.Array.size
@@ -6548,6 +6543,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.8773585
       objectReference: {fileID: 0}
+    - target: {fileID: 5365121195231702818, guid: 7c4007ad62f0c7044a241be01a2d0c0b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c4007ad62f0c7044a241be01a2d0c0b, type: 3}
 --- !u!1001 &299630275
@@ -6689,7 +6689,7 @@ PrefabInstance:
     - target: {fileID: 3901904116941014190, guid: cf79e9ead2705f943ac9a2caf756fa2e,
         type: 3}
       propertyPath: Destination
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf79e9ead2705f943ac9a2caf756fa2e, type: 3}
