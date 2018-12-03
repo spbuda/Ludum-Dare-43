@@ -178,7 +178,7 @@ MonoBehaviour:
     loop: 0
   ChargeSound:
     sounds:
-    - {fileID: 8300000, guid: 019ba993239371e4ea7a093f126ad0ab, type: 3}
+    - {fileID: 8300000, guid: 729976a9abe26c44abe3484c6e6be05f, type: 3}
     volume: 0.6
     pitchVariance: 0
     loop: 0

@@ -9,19 +9,16 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuScene.unity
     guid: 2baaa385a447d9446ba2c023694ec57f
   - enabled: 1
-    path: Assets/Scenes/SpeedPadIntro.unity
+    path: Assets/Scenes/Liftoff.unity
     guid: c7739bceb394fe7419396d9dc04dce43
   - enabled: 1
-    path: Assets/Scenes/ButtonTurretIntro.unity
+    path: Assets/Scenes/InfiltrationI.unity
     guid: 77c320c3025e71245be199f06cacac85
-  - enabled: 1
-    path: Assets/Scenes/HealthIntro.unity
-    guid: 2d98fe6f6df334c40a2c34001c07a974
   - enabled: 1
     path: Assets/Scenes/LevelFinal.unity
     guid: 991a691abdd18d840b40d5df0d43eaa8
   - enabled: 1
-    path: Assets/Scenes/SpikeAndDotPadIntro.unity
+    path: Assets/Scenes/TheSnoon.unity
     guid: 5d0d4a53620c8f14e930bb2838442165
   - enabled: 1
     path: Assets/Scenes/TheHorseShoe.unity
@@ -53,4 +50,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WeLiveInASociety.unity
     guid: 298563e65aec1154f984afc5c4909d24
+  - enabled: 1
+    path: Assets/Scenes/InfiltrationII.unity
+    guid: 2d98fe6f6df334c40a2c34001c07a974
   m_configObjects: {}
