@@ -19,13 +19,13 @@ public class Turret : MonoBehaviour {
 	public float FireChargeTime = 1f;
 	public float FireRate = 2f;
 
-	private RaycastHit2D[] hits = new RaycastHit2D[1];
+	private RaycastHit2D[] hits = new RaycastHit2D[5];
 	private bool firing, charging;
 	private new ExtendedAudioSource audio;
 	private Material mat;
 	bool dead = false;
 	void Update() {
-		if (dead) { return; }
+		if (dead || MainActions.Instance.PauseBehaviors) { return; }
 		if(Energy <= 0f) {
 			audio.Play (DeathSound);
 			Destroy (Main);
@@ -54,8 +54,17 @@ public class Turret : MonoBehaviour {
 					int hit = Physics2D.RaycastNonAlloc (origin.position, dir, hits, FireRange);
 					//Can we see the player
 					if (hit > 0 && hits[0].collider != null && hits[0].collider.gameObject == MainActions.Instance.Player.gameObject) {
-						//TODO: aim at player.
 						StartCoroutine (Fire (origin, target));
+					}if(hit > 1 && hits[0].collider != null) {
+						for(int i = 0; i < hit; i++) {
+							if(hits[i].collider.gameObject.tag == "Shootover") {
+
+							}else if (hits[i].collider.gameObject == MainActions.Instance.Player.gameObject) {
+								StartCoroutine (Fire (origin, target));
+							} else {
+								break;
+							}
+						}
 					}
 				}
 			}
@@ -73,25 +82,30 @@ public class Turret : MonoBehaviour {
 			time += Time.deltaTime;
 			yield return null;
 		}
-		BulletPool.Instance.Next (BulletSpeed, BulletDamage, BulletLifetime, origin.position, target.position);
 
-		float adjustedFireRate = FireRate - fireDisperse - fireRecharge;
-		time = 0f;
-		while (time < fireDisperse) {
-			float val = Ease.Linear.From (colorIntensity, .3f, time, fireDisperse);
-			mat.SetVector ("_EmissionColor", color * val);
-			time += Time.deltaTime;
-			yield return null;
+		if (MainActions.Instance.PauseBehaviors) {
+			mat.SetVector ("_EmissionColor", color);
+		} else {
+			BulletPool.Instance.Next (BulletSpeed, BulletDamage, BulletLifetime, origin.position, target.position);
+
+			float adjustedFireRate = FireRate - fireDisperse - fireRecharge;
+			time = 0f;
+			while (time < fireDisperse) {
+				float val = Ease.Linear.From (colorIntensity, .3f, time, fireDisperse);
+				mat.SetVector ("_EmissionColor", color * val);
+				time += Time.deltaTime;
+				yield return null;
+			}
+			time = 0f;
+			while (time < fireRecharge) {
+				float val = Ease.Linear.From (.4f, 1f, time, fireRecharge);
+				mat.SetVector ("_EmissionColor", color * val);
+				time += Time.deltaTime;
+				yield return null;
+			}
+			mat.SetVector ("_EmissionColor", color);
+			yield return new WaitForSeconds (adjustedFireRate);
 		}
-		time = 0f;
-		while (time < fireRecharge) {
-			float val = Ease.Linear.From (.4f, 1f, time, fireRecharge);
-			mat.SetVector ("_EmissionColor", color * val);
-			time += Time.deltaTime;
-			yield return null;
-		}
-		mat.SetVector ("_EmissionColor", color);
-		yield return new WaitForSeconds (adjustedFireRate);
 		firing = false;
 		charging = false;
 	}

@@ -47,4 +47,12 @@ public class BulletPool : ScriptableObject {
 		bullet.Init (speed, damage, lifetime, position, target);
 		return bullet;
 	}
+
+	public void ResetAll() {
+		if(pool != null) {
+			foreach(Bullet bullet in pool) {
+				bullet.Detonate ();
+			}
+		}
+	}
 }
