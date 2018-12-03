@@ -4981,6 +4981,12 @@ MonoBehaviour:
     volume: 0.5
     pitchVariance: 0
     loop: 0
+  DOT:
+    sounds:
+    - {fileID: 0}
+    volume: 0.5
+    pitchVariance: 0
+    loop: 0
 --- !u!1 &3016063549220661919
 GameObject:
   m_ObjectHideFlags: 0
