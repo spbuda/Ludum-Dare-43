@@ -29,9 +29,9 @@ public class MainActions : ScriptableObject {
 	}
 
 
-	public void NextScene(float score, SceneName scene) {
+	public void NextScene(float score, float multiplier, SceneName scene) {
 		BulletPool.Instance.ResetAll ();
-		TotalScore += score;
+		TotalScore += score * multiplier;
 		SceneManager.LoadScene (SceneFromEnum(scene), LoadSceneMode.Single);
 		BulletPool.Instance.ResetAll ();
 		PauseBehaviors = false;
@@ -43,10 +43,10 @@ public class MainActions : ScriptableObject {
 		PauseBehaviors = false;
 	}
 
-	public void WinGame(float score) {
+	public void WinGame(float score, float multiplier) {
 		LosePopup pop = Instantiate (LosePopup, Vector3.zero, Quaternion.identity);
 		BulletPool.Instance.ResetAll ();
-
+		TotalScore += score * multiplier;
 		pop.ChangeScore (TotalScore);
 		pop.GetComponentInChildren<RetryButton> ().gameObject.SetActive (false);
 		PauseBehaviors = true;
@@ -68,7 +68,7 @@ public class MainActions : ScriptableObject {
 	}
 
 	public enum SceneName {
-		TheHorseShoe, SpeedPadIntro, ButtonTurretIntro, HealthIntro, SpikeAndDotPadIntro, TheGlove, LevelFinal
+		TheHorseShoe, SpeedPadIntro, ButtonTurretIntro, HealthIntro, SpikeAndDotPadIntro, TheGlove, Strafing, LevelFinal
 	};
 
 	public PlayerController Player { get; set; } = null;
