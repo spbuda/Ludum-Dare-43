@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TheGlove.unity
     guid: e236d1ca5b2081443afd7a38ea1e983e
+  - enabled: 1
+    path: Assets/Scenes/ReachForTheSkies.unity
+    guid: c5fabacb72983364eb8c7cb5cb4adb18
   m_configObjects: {}
