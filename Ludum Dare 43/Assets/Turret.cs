@@ -82,25 +82,30 @@ public class Turret : MonoBehaviour {
 			time += Time.deltaTime;
 			yield return null;
 		}
-		BulletPool.Instance.Next (BulletSpeed, BulletDamage, BulletLifetime, origin.position, target.position);
 
-		float adjustedFireRate = FireRate - fireDisperse - fireRecharge;
-		time = 0f;
-		while (time < fireDisperse) {
-			float val = Ease.Linear.From (colorIntensity, .3f, time, fireDisperse);
-			mat.SetVector ("_EmissionColor", color * val);
-			time += Time.deltaTime;
-			yield return null;
+		if (MainActions.Instance.PauseBehaviors) {
+			mat.SetVector ("_EmissionColor", color);
+		} else {
+			BulletPool.Instance.Next (BulletSpeed, BulletDamage, BulletLifetime, origin.position, target.position);
+
+			float adjustedFireRate = FireRate - fireDisperse - fireRecharge;
+			time = 0f;
+			while (time < fireDisperse) {
+				float val = Ease.Linear.From (colorIntensity, .3f, time, fireDisperse);
+				mat.SetVector ("_EmissionColor", color * val);
+				time += Time.deltaTime;
+				yield return null;
+			}
+			time = 0f;
+			while (time < fireRecharge) {
+				float val = Ease.Linear.From (.4f, 1f, time, fireRecharge);
+				mat.SetVector ("_EmissionColor", color * val);
+				time += Time.deltaTime;
+				yield return null;
+			}
+			mat.SetVector ("_EmissionColor", color);
+			yield return new WaitForSeconds (adjustedFireRate);
 		}
-		time = 0f;
-		while (time < fireRecharge) {
-			float val = Ease.Linear.From (.4f, 1f, time, fireRecharge);
-			mat.SetVector ("_EmissionColor", color * val);
-			time += Time.deltaTime;
-			yield return null;
-		}
-		mat.SetVector ("_EmissionColor", color);
-		yield return new WaitForSeconds (adjustedFireRate);
 		firing = false;
 		charging = false;
 	}

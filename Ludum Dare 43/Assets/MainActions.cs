@@ -33,11 +33,13 @@ public class MainActions : ScriptableObject {
 		BulletPool.Instance.ResetAll ();
 		TotalScore += score;
 		SceneManager.LoadScene (SceneFromEnum(scene), LoadSceneMode.Single);
+		BulletPool.Instance.ResetAll ();
 		PauseBehaviors = false;
 	}
 
 	public void RestartScene() {
 		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+		BulletPool.Instance.ResetAll ();
 		PauseBehaviors = false;
 	}
 
