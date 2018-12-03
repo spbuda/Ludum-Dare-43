@@ -47,6 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da41ef789d73aae46808077b72d39f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Music:
+    sounds:
+    - {fileID: 8300000, guid: 13d3cde83dea32447a77811e44ab81b5, type: 3}
+    volume: 1
+    pitchVariance: 0
+    loop: 1
 --- !u!1001 &7183110135212515714
 PrefabInstance:
   m_ObjectHideFlags: 0
