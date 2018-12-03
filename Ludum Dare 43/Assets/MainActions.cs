@@ -19,33 +19,44 @@ public class MainActions : ScriptableObject {
 	private LosePopup LosePopup;
 	
 	public float TotalScore = 0f;
+
+	public bool PauseBehaviors = false;
 	
 	public void StartGame() {
 		TotalScore = 0f;
 		SceneManager.LoadScene(SceneFromEnum (SceneName.TheHorseShoe), LoadSceneMode.Single);
+		PauseBehaviors = false;
 	}
 
 
 	public void NextScene(float score, SceneName scene) {
+		BulletPool.Instance.ResetAll ();
 		TotalScore += score;
 		SceneManager.LoadScene (SceneFromEnum(scene), LoadSceneMode.Single);
+		BulletPool.Instance.ResetAll ();
+		PauseBehaviors = false;
 	}
 
 	public void RestartScene() {
 		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+		BulletPool.Instance.ResetAll ();
+		PauseBehaviors = false;
 	}
 
 	public void WinGame(float score) {
 		LosePopup pop = Instantiate (LosePopup, Vector3.zero, Quaternion.identity);
+		BulletPool.Instance.ResetAll ();
 
 		pop.ChangeScore (TotalScore);
 		pop.GetComponentInChildren<RetryButton> ().gameObject.SetActive (false);
+		PauseBehaviors = true;
 	}
 
 	public void LoseGame() {
 		LosePopup pop = Instantiate (LosePopup, Vector3.zero, Quaternion.identity);
-
+		BulletPool.Instance.ResetAll ();
 		pop.ChangeScore (TotalScore);
+		PauseBehaviors = true;
 	}
 
 	public void QuitGame() {
@@ -57,7 +68,7 @@ public class MainActions : ScriptableObject {
 	}
 
 	public enum SceneName {
-		TheHorseShoe, SpeedPadIntro, ButtonTurretIntro, HealthIntro, SpikeAndDotPadIntro, LevelFinal
+		TheHorseShoe, SpeedPadIntro, ButtonTurretIntro, HealthIntro, SpikeAndDotPadIntro, TheGlove, LevelFinal
 	};
 
 	public PlayerController Player { get; set; } = null;
