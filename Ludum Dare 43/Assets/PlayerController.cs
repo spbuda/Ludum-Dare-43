@@ -121,6 +121,9 @@ public class PlayerController : MonoBehaviour {
 		if(staticEffect.gameObject.GetComponent<SpeedPad>() != null) {
 			speedModifier = 1f;
 		}
+		if(staticEffect.gameObject.GetComponent<DamageOT>() != null) {
+			sounds.DOTStop ();
+		}
 	}
 
 	void HandleActions(float timestep) {

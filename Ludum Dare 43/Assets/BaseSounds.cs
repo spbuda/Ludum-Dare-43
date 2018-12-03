@@ -120,4 +120,9 @@ public class BaseSounds : MonoBehaviour {
 			dotPad.Play ();
 		}
 	}
+	public void DOTStop() {
+		if (doting) {
+			dotPad.Source.Stop ();
+		}
+	}
 }

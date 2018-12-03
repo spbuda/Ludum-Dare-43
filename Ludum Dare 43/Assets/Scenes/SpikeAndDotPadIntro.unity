@@ -12035,6 +12035,11 @@ PrefabInstance:
       propertyPath: Music.sounds.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: e66c703b5e2ecef41994aaa9cb653618, type: 3}
+    - target: {fileID: 4877226727443886921, guid: 7c4007ad62f0c7044a241be01a2d0c0b,
+        type: 3}
+      propertyPath: Music
+      value: 
+      objectReference: {fileID: 8300000, guid: e66c703b5e2ecef41994aaa9cb653618, type: 3}
     - target: {fileID: 5145662724265033464, guid: 7c4007ad62f0c7044a241be01a2d0c0b,
         type: 3}
       propertyPath: m_Tiles.Array.size

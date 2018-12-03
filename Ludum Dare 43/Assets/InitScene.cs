@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InitScene : MonoBehaviour {
-	public Tools.SoundEffect Music;
-	private new Tools.ExtendedAudioSource audio;
+	public AudioClip Music;
+	public float volume = .2f;
 
 	void Start() {
+		MusicManager.Instance.PlayTrack (Music, volume);
 		MainActions.Instance.PauseBehaviors = false;
-		audio = Tools.ExtendedAudioSource.Prepare (this.gameObject, Music);
-		audio.Play (volume: Music.volume);
-	}
-
-	private void OnDisable() {
-		audio.Source.Stop ();
 	}
 }
