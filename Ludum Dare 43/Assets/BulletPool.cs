@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 [CreateAssetMenu (menuName = "Scriptables/Bullet Pool")]
 public class BulletPool : ScriptableObject {
-	private static readonly string ASSETPATH = "Assets/Scriptables/BulletPool.asset";
+	private static readonly string ASSETPATH = "BulletPool";
 	private static BulletPool _inst;
 	public static BulletPool Instance {
 		get {

@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour {
 			sounds.OnSoundType (dmg.sound);
 			TriggerShake ();
 			takeDamageParticles.At (collisionD.GetContact (0).point);
-		} else {
+		} else if(!MainActions.Instance.PauseBehaviors) {
 			Debug.LogError ("Improperly configured collision object without collision damage - " + collisionD.gameObject.name);
 		}
 

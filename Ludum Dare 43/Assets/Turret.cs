@@ -21,7 +21,7 @@ public class Turret : MonoBehaviour {
 
 	private RaycastHit2D[] hits = new RaycastHit2D[5];
 	private bool firing, charging;
-	private new ExtendedAudioSource audio;
+	private ExtendedAudioSource audio;
 	private Material mat;
 	bool dead = false;
 	void Update() {

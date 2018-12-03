@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 [CreateAssetMenu (menuName = "Scriptables/Main Actions")]
 public class MainActions : ScriptableObject {
-	private static readonly string ASSETPATH = "Assets/Scriptables/MainActions.asset";
+	private static readonly string ASSETPATH = "MainActions";
 	private static MainActions _inst;
 	public static MainActions Instance {
 		get {
@@ -66,7 +66,7 @@ public class MainActions : ScriptableObject {
 		pop.ChangeScore (score, TotalScore + (score * multiplier), multiplier);
 
 		pop.GetComponentInChildren<RetryButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
-		pop.GetComponentInChildren<NextButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
+		pop.GetComponentInChildren<NextButton> ().GetComponent<UnityEngine.UI.Button> ().gameObject.SetActive(false);
 	}
 
 	public void LoseGame() {
