@@ -23,27 +23,28 @@ public class MainActions : ScriptableObject {
 	public bool PauseBehaviors = false;
 	
 	public void StartGame() {
+		PauseBehaviors = false;
 		TotalScore = 0f;
 		SceneManager.LoadScene(SceneFromEnum (SceneName.TheHorseShoe), LoadSceneMode.Single);
-		PauseBehaviors = false;
 	}
 
 
 	public void NextScene(float score, float multiplier, SceneName scene) {
+		PauseBehaviors = false;
 		BulletPool.Instance.ResetAll ();
 		TotalScore += score * multiplier;
 		SceneManager.LoadScene (SceneFromEnum(scene), LoadSceneMode.Single);
 		BulletPool.Instance.ResetAll ();
-		PauseBehaviors = false;
 	}
 
 	public void RestartScene() {
+		PauseBehaviors = false;
 		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
 		BulletPool.Instance.ResetAll ();
-		PauseBehaviors = false;
 	}
 
 	public void WinLevel(float score, float multiplier, SceneName scene) {
+		PauseBehaviors = true;
 		LosePopup pop = Instantiate (LosePopup, Vector3.zero, Quaternion.identity);
 		BulletPool.Instance.ResetAll ();
 		//TotalScore += score * multiplier;
@@ -56,26 +57,25 @@ public class MainActions : ScriptableObject {
 
 		pop.GetComponentInChildren<NextButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
 		pop.NextLevelCallback += callback;
-		PauseBehaviors = true;
 	}
 
 	public void WinGame(float score, float multiplier) {
+		PauseBehaviors = true;
 		LosePopup pop = Instantiate (LosePopup, Vector3.zero, Quaternion.identity);
 		BulletPool.Instance.ResetAll ();
 		pop.ChangeScore (score, TotalScore + (score * multiplier), multiplier);
 
 		pop.GetComponentInChildren<RetryButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
 		pop.GetComponentInChildren<NextButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
-		PauseBehaviors = true;
 	}
 
 	public void LoseGame() {
+		PauseBehaviors = true;
 		LosePopup pop = Instantiate (LosePopup, Vector3.zero, Quaternion.identity);
 		BulletPool.Instance.ResetAll ();
 		pop.GetComponentInChildren<RetryButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
 		pop.GetComponentInChildren<NextButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = false;
 		pop.ChangeScore (0f, TotalScore, 0f);
-		PauseBehaviors = true;
 	}
 
 	public void QuitGame() {
