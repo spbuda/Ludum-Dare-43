@@ -80,7 +80,9 @@ public class MainActions : ScriptableObject {
 		pop.ChangeScore (score, TotalScore + (score * multiplier), multiplier);
 
 		pop.GetComponentInChildren<RetryButton> ().GetComponent<UnityEngine.UI.Button> ().interactable = true;
+
 		pop.GetComponentInChildren<NextButton> ().GetComponent<UnityEngine.UI.Button> ().gameObject.SetActive(false);
+		pop.GetComponentInChildren<YouWinText> (true).gameObject.SetActive (true);
 	}
 
 	public void LoseGame() {
@@ -101,8 +103,43 @@ public class MainActions : ScriptableObject {
 	}
 
 	public enum SceneName {
-		TheHorseShoe, SpeedPadIntro, ButtonTurretIntro, HealthIntro, SpikeAndDotPadIntro, TheGlove, Strafing, Helix, Edgy, Snek, Walls, ReachForTheSkies, SolarSystem, WeLiveInASociety, LevelFinal
+		TheHorseShoe, Liftoff, InfiltrationI, InfiltrationII, TheSnoon, TheGlove, Strafing, Helix, Edgy, Snek, Walls, ReachForTheSkies, SolarSystem, WeLiveInASociety, LevelFinal
 	};
+
+	public string ReadableSceneName (SceneName scene) {
+		switch (scene) {
+		case SceneName.TheHorseShoe:
+			return "The Horse Shoe";
+		case SceneName.Liftoff:
+			return "Liftoff";
+		case SceneName.InfiltrationI:
+			return "Infiltration I";
+		case SceneName.InfiltrationII:
+			return "Infiltration II";
+		case SceneName.TheSnoon:
+			return "The Snoon";
+		case SceneName.TheGlove:
+			return "The Glove";
+		case SceneName.Strafing:
+			return "Strafing";
+		case SceneName.Helix:
+			return "Helix";
+		case SceneName.Edgy:
+			return "Edgy";
+		case SceneName.Snek:
+			return "Snek";
+		case SceneName.Walls:
+			return "Walls";
+		case SceneName.ReachForTheSkies:
+			return "Reach For The Skies";
+		case SceneName.SolarSystem:
+			return "Solar System";
+		case SceneName.WeLiveInASociety:
+			return "We Live In A Society";
+		default:
+			throw new UnityException ("No name given for " + scene);
+		}
+	}
 
 	public PlayerController Player { get; set; } = null;
 }
