@@ -21,6 +21,7 @@ public class MainActions : ScriptableObject {
 	public float TotalScore = 0f;
 
 	public bool PauseBehaviors = false;
+	public float Volume = 1f;
 	
 	public void StartGame() {
 		PauseBehaviors = false;
